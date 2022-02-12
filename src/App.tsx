@@ -3,11 +3,14 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Routing } from "./router/route";
+import { AuthProvider } from "./context/AuthContext/AuthProvider";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routing />
+      <AuthProvider>
+        <Routing />
+      </AuthProvider>
     </BrowserRouter>
   );
 }

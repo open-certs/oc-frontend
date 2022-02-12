@@ -1,33 +1,30 @@
 import { defaultState } from "./AuthProvider";
 import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
+export const cookies = new Cookies();
 
 export const AuthReducer = (state: defaultState, action: any) => {
   switch (action.type) {
     case "LOGIN": {
-      cookies.set(
-        "isAuthenticated",
-        JSON.stringify(action.payload.isAuthenticated),
-        {
-          expires: new Date(Date.now() + 31536000000),
-        }
-      );
-      cookies.set("user", JSON.stringify(action.payload.user), {
+      cookies.set("isAuthenticated", JSON.stringify(1), {
+        expires: new Date(Date.now() + 31536000000),
+      });
+      cookies.set("user", JSON.stringify(action.payload), {
         expires: new Date(Date.now() + 31536000000),
       });
       return {
         ...state,
-        isAuthenticated: action.payload.isAuthenticated,
-        user: action.payload.user,
+        isAuthenticated: 1,
+        user: action.payload,
       };
     }
     case "LOGOUT": {
       cookies.remove("isAuthenticated");
       cookies.remove("user");
+      cookies.remove("token");
       return {
         ...state,
-        isAuthenticated: false,
+        isAuthenticated: 0,
         user: null,
       };
     }

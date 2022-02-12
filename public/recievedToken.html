@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Redirecting...</title>
+  </head>
+
+  <body onload="myFunction()">
+    <script>
+      myFunction = () => {
+        if (window.opener) {
+          const urlParams = new URLSearchParams(window.location.search);
+          const myToken = urlParams.get("token");
+          if (myToken && myToken.length > 0) window.opener.loggedIn(myToken);
+        } else {
+          window.close();
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,8 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { apiBaseUrl, logo } from "../../config";
 import { FaGithubAlt, FaGitlab, FaBitbucket, FaDiscord } from "react-icons/fa";
 import { Button } from "../helpers/Button";
 import Swal from "sweetalert2";
+import Lottie from "react-lottie";
+import * as HomeAnime from "../../assets/home.json";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthContext/AuthProvider";
+import { cookies } from "../../context/AuthContext/AuthReducer";
+import { OpenPopUp } from "../helpers/OpenPopup";
 
 interface LoginButtonProps {
   children: [React.ReactNode, React.ReactNode];
@@ -38,13 +44,17 @@ let browser: any = null;
 let popup: any = null;
 
 export const Login: React.FC<LoginProps> = ({}) => {
+  const navigate = useNavigate();
+  const { loginConfirm } = useContext<any>(AuthContext);
+
   useEffect(() => {
     browser = window.self;
     browser.loggedIn = (token: any) => {
-      // if (confirm) {
-      //   // confirm(token);
-
-      // }
+      console.log({ token });
+      if (loginConfirm) {
+        loginConfirm(token);
+        cookies.set("token", token);
+      }
       if (popup && !popup.closed) {
         popup.close();
       }
@@ -62,63 +72,27 @@ export const Login: React.FC<LoginProps> = ({}) => {
   };
 
   const onClick = (url: string) => {
-    console.log("onClick", url);
-    if (!browser) return;
-    if (popup && !popup.closed) {
-      popup.focus();
-
-      return;
-    }
-    const w = 700,
-      h = 700;
-    const dualScreenLeft =
-      window.screenLeft !== undefined ? window.screenLeft : window.screenX;
-    const dualScreenTop =
-      window.screenTop !== undefined ? window.screenTop : window.screenY;
-
-    const width = window.innerWidth
-      ? window.innerWidth
-      : document.documentElement.clientWidth
-      ? document.documentElement.clientWidth
-      : window.screen.width;
-    const height = window.innerHeight
-      ? window.innerHeight
-      : document.documentElement.clientHeight
-      ? document.documentElement.clientHeight
-      : window.screen.height;
-
-    const systemZoom = width / window.screen.availWidth;
-    const left = (width - w) / 2 / systemZoom + dualScreenLeft;
-    const top = (height - h) / 2 / systemZoom + dualScreenTop;
-    popup = browser.open(
-      url,
-      "Login",
-      `dependent=${1},  
-            alwaysRaised=${1}, 
-            width=${w / systemZoom}, 
-            height=${h / systemZoom},
-            top=${top}, 
-            left=${left}
-            `
-    );
+    popup = OpenPopUp(url, browser, popup);
   };
-
   return (
     <>
       <div
-        className="grid w-full h-full"
+        className="background-oregon-grapes-login grid w-full h-full"
         style={{
           gridTemplateRows: "1fr auto 1fr",
         }}
       >
         <div className="hidden sm:flex" />
-        <div className="flex flex-row absolute top-0 left-15 w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">
-          <div className="hidden sm:flex">
+        <div className="flex flex-row absolute top-0 w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">
+          <div
+            className="hidden sm:flex cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <img src={logo} alt="logo" className="h-10 w-10" />
           </div>
         </div>
-        <div className="flex justify-self-center self-center sm:hidden">
-          <img src={logo} alt="logo" className="h-10 w-10" />
+        <div className="flex justify-self-center self-center sm:hidden cursor-pointer">
+          <img src={logo} alt="logo" className="h-10 w-10 " />
         </div>
         <div className="flex items-center justify-center m-auto flex-col p-6 gap-5 bg-primary-800 sm:rounded-8 z-10 sm:w-400 w-full">
           <div className="flex gap-2 flex-col">
@@ -143,14 +117,17 @@ export const Login: React.FC<LoginProps> = ({}) => {
             </LoginButton>
           </div>
         </div>
-        {/* <div className="flex flex-row absolute bottom-0 w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">
+        <div className="flex flex-row absolute bottom-0 w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">
           <div className="flex flex-row gap-6 text-primary-300">
-            <a href="/privacy-policy.html" className="hover:text-primary-200">
+            <a
+              href="/privacy-policy.html"
+              className="hover:text-primary-200 text-lg"
+            >
               Privacy policy
             </a>
             <a
               href="https://github.com/open-certs/oc-frontend"
-              className="ml-2 hover:text-primary-200"
+              className="ml-2 hover:text-primary-200 text-lg"
             >
               Report a bug
             </a>
@@ -161,21 +138,20 @@ export const Login: React.FC<LoginProps> = ({}) => {
                 rel="noreferrer"
               >
                 <FaGithubAlt
-                  width={20}
-                  height={20}
-                  className="ml-2 mt-1 cursor-pointer hover:text-primary-200"
+                  size={30}
+                  className="ml-2 cursor-pointer hover:text-primary-200"
                 />
               </a>
-              <a href="/" target="_blank" rel="noreferrer">
-                <FaDiscord
-                  width={20}
-                  height={20}
-                  className="ml-2 mt-1 hover:text-primary-200"
-                />
+              <a
+                href="https://discord.gg/VPb7Dd2y"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaDiscord size={30} className="ml-2 hover:text-primary-200" />
               </a>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );

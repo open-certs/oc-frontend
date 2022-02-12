@@ -35,7 +35,7 @@ p.bold {
   --color-accent-gradient: linear-gradient(
     90deg,
     rgba(255, 114, 110, 1) 0%,
-    rgba(224, 68, 44, 1) 55%,
+    rgba(224, 68, 44, 1) 40%,
     rgba(74, 111, 253, 1) 69%,
     rgba(74, 111, 253, 1) 79%
   );
@@ -46,6 +46,11 @@ p.bold {
   --color-primary-100-translucent: rgba(222, 227, 234, 0.15);
 }
 
+input:focus {
+  text-decoration: none;
+  border: none;
+  outline: var(--color-secondary-washed-out) solid 2px !important;
+}
 h1 {
   font-size: 4rem;
 }
@@ -166,4 +171,25 @@ button:focus {
   background: var(--color-accent-gradient);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+}
+
+.background-oregon-grapes {
+  background-image: url("./assets/waveDark.svg"), url("./assets/loginWave.svg");
+  width: 100% !important;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  /* background-blend-mode: screen; */
+}
+
+.background-oregon-grapes-login {
+  background-image: url("./assets/loginWave.svg"), url("./assets/wave.svg");
+  width: 100% !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-blend-mode: screen;
 }
