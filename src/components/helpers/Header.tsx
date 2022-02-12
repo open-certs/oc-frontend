@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { logo } from "../../config";
@@ -9,7 +10,7 @@ interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = ({}) => {
   const navigation = useNavigate();
-  const { isAuthenticated, logout } = useContext<any>(AuthContext);
+  const { isAuthenticated, logout, user } = useContext<any>(AuthContext);
   const commingSoon = () => {
     console.log("comming soon");
     Swal.fire({
@@ -23,36 +24,42 @@ export const Header: React.FC<HeaderProps> = ({}) => {
   return (
     <div className="h-9 bg-primary-800 px-5 fixed w-full">
       <div className="flex justify-between items-center h-full px-10 py-4">
-        <div className="flex items-center justify-between w-1/5">
+        <div className="flex items-center justify-between">
           <div className="flex items-center justify-center">
             <img src={logo} alt="logo" className="h-9 w-9" />
             <span className="text-3xl text-bg hover:underline">Open-Cert</span>
           </div>
-          <div className="flex ">
+          {/* <div className="flex ">
             <div
               onClick={() => commingSoon()}
               className="hover:text-primary-200 hover:underline text-xl"
             >
               Verify
             </div>
-          </div>
+          </div> */}
         </div>
 
-        <div>
+        <div className={"flex items-center justify-center"}>
+          {isAuthenticated === 1 && (
+            <>
+              <p className="text-xl opacity-70"> {user.username}</p>
+              <img
+                className="inline object-cover w-7 h-7 mx-4 rounded-full"
+                src={user.photos[0].value}
+                alt="Profile image"
+              />
+            </>
+          )}
           {isAuthenticated ? (
-            <Button
-              className="justify-center text-base py-3 mt-2"
-              color={"secondary"}
+            <div
               onClick={() => logout()}
+              className="flex items-center bg-primary-900 justify-center text-base p-2 rounded-8 hover:bg-primary-800 cursor-pointer"
             >
-              <div className="flex items-center justify-between w-full text-lg">
-                Logout
-                <div />
-              </div>
-            </Button>
+              <FaSignOutAlt size={20} />
+            </div>
           ) : (
             <Button
-              className="justify-center text-base py-3 mt-2"
+              className="justify-center text-base py-3"
               color={"secondary"}
               onClick={() => navigation("/login")}
             >
