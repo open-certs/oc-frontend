@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Header } from "../helpers/Header";
 import Lottie from "react-lottie";
 import * as HomeAnime from "../../assets/home.json";
@@ -16,6 +16,15 @@ let popup: any = null;
 export const Main: React.FC<MainProps> = ({}) => {
   const { isAuthenticated } = useContext(AuthContext);
   const { loginConfirm } = useContext<any>(AuthContext);
+  const [repoData, setRepoData] = useState<{
+    ownerName: string;
+    repoName: string;
+  }>({
+    ownerName: "",
+    repoName: "",
+  });
+
+  const { ownerName, repoName } = repoData;
 
   useEffect(() => {
     browser = window.self;
@@ -30,9 +39,22 @@ export const Main: React.FC<MainProps> = ({}) => {
       }
     };
   }, []);
+
+  const onChange = (e: any) => {
+    const { name, value } = e.target;
+    console.log({ name, value });
+    setRepoData({ ...repoData, [name]: value });
+  };
+
   const onClick = (url: string) => {
     popup = OpenPopUp(url, browser, popup);
   };
+
+  const handleCertify = async () => {
+    const { ownerName, repoName } = repoData;
+    console.log({ ownerName, repoName });
+  };
+
   return (
     <>
       <Header />
@@ -77,6 +99,9 @@ export const Main: React.FC<MainProps> = ({}) => {
                         className="p-2 rounded-8 text-black"
                         placeholder="open-cert"
                         required
+                        name={"ownerName"}
+                        value={ownerName}
+                        onChange={onChange}
                       />
                     </div>
                     <span className="mx-2 text-5xl flex items-center justify-center">
@@ -91,13 +116,16 @@ export const Main: React.FC<MainProps> = ({}) => {
                         className="p-2 rounded-8 text-black"
                         placeholder="react-ui"
                         required
+                        name={"repoName"}
+                        value={repoName}
+                        onChange={onChange}
                       />
                     </div>
                     <div className="w-1/2">
                       <Button
                         className="justify-center text-base py-3 mx-2"
                         color={"primary"}
-                        // onClick={() => navigation("/login")}
+                        onClick={() => handleCertify()}
                       >
                         <div className="flex items-center justify-between w-full text-black ml-2 font-bold">
                           Certify
