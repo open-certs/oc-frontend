@@ -106,6 +106,7 @@ body,
   width: 100%;
   display: flex;
   font-family: "Roboto Mono", monospace;
+  color: white;
 }
 
 audio {

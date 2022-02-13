@@ -9,6 +9,8 @@ import { cookies } from "../../context/AuthContext/AuthReducer";
 import { OpenPopUp } from "../helpers/OpenPopup";
 import { apiBaseUrl } from "../../config";
 import { Grid } from "@mui/material";
+import Swal from "sweetalert2";
+
 interface MainProps {}
 
 let browser: any = null;
@@ -74,40 +76,58 @@ export const Main: React.FC<MainProps> = ({}) => {
         console.log({ err });
       });
   };
-
+  const commingSoon = () => {
+    console.log("comming soon");
+    Swal.fire({
+      title: "Comming Soon",
+      text: "This feature is comming soon",
+      icon: "info",
+    });
+  };
   return (
     <>
       <Header />
 
-      <div className="background-oregon-grapes px-15 mt-9">
+      <div className="background-oregon-grapes px-15 mt-5">
         <div className="upper flex items-center justify-between py-6 h-auto">
           <Grid container spacing={2} columns={16}>
             <Grid item xs={8}>
               <div className="mt-15 w-4/5 ">
                 <span className="text-7xl text-left text-bg hover:underline">
-                  Open-Cert
+                  Open-Certs
                 </span>
                 <p className="text-xl opacity-70">
-                  A Open-Source Platform to certify open-source project.
+                  An Open-Source Platform to certify open-source projects.
                 </p>
-                <div className="mt-6">
-                  <div className="flex items-center justify-start w-3/4">
+                <div className="mt-10">
+                  <div className="flex flex-col items-start justify-start w-3/4">
                     {!isAuthenticated ? (
                       <>
-                        <div className="flex items-center justify-start text-2xl mr-4">
+                        <div className="flex items-center justify-between text-2xl mr-4 mb-4">
                           Get started with
                         </div>
-                        <div
-                          onClick={() => onClick(`${apiBaseUrl}/auth/github`)}
-                          className="flex items-center bg-primary-800 justify-center text-base  p-2 w-1/6 ml-1 rounded-8 hover:bg-primary-900 cursor-pointer"
-                        >
-                          <FaGithubAlt size={40} />
-                        </div>
-                        <div className="flex items-center bg-primary-800 justify-center text-base  p-2 w-1/6 mx-1 rounded-8 hover:bg-primary-900 cursor-pointer">
-                          <FaBitbucket size={40} />
-                        </div>
-                        <div className="flex items-center bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 hover:bg-primary-900 cursor-pointer">
-                          <FaGitlab size={40} />
+                        <div className="flex w-full">
+                          <div
+                            title="Github"
+                            onClick={() => onClick(`${apiBaseUrl}/auth/github`)}
+                            className="flex flex-1 items-center bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 hover:bg-primary-900 cursor-pointer"
+                          >
+                            <FaGithubAlt size={40} />
+                          </div>
+                          <div
+                            title="Bitbucket"
+                            onClick={() => commingSoon()}
+                            className="flex flex-1 items-center bg-primary-800 justify-center text-base  p-2 w-1/6 mx-3 rounded-8 hover:bg-primary-900 cursor-pointer"
+                          >
+                            <FaBitbucket size={40} />
+                          </div>
+                          <div
+                            title="Gitlab"
+                            onClick={() => commingSoon()}
+                            className="flex flex-1 items-center bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 hover:bg-primary-900 cursor-pointer"
+                          >
+                            <FaGitlab size={40} />
+                          </div>
                         </div>
                       </>
                     ) : (
@@ -119,7 +139,7 @@ export const Main: React.FC<MainProps> = ({}) => {
                           <input
                             type={"text"}
                             className="p-2 rounded-8 text-black"
-                            placeholder="open-cert"
+                            placeholder="open-certs"
                             required
                             name={"ownerName"}
                             value={ownerName}
@@ -164,7 +184,7 @@ export const Main: React.FC<MainProps> = ({}) => {
               <div>
                 <Lottie
                   style={{
-                    marginTop: "1rem",
+                    marginTop: "7rem",
                   }}
                   width={700}
                   options={{
@@ -187,13 +207,14 @@ export const Main: React.FC<MainProps> = ({}) => {
             Privacy policy
           </a>
           <a
-            href="https://github.com/open-certs/oc-frontend"
+            href="https://github.com/open-certs/oc-frontend/issues"
             className="ml-2 hover:text-primary-200 text-lg"
           >
             Report a bug
           </a>
           <div className="flex flex-row gap-6 sm:gap-4">
             <a
+              title="Github-oc-frontend"
               href="https://github.com/open-certs/oc-frontend"
               target="_blank"
               rel="noreferrer"
@@ -204,6 +225,7 @@ export const Main: React.FC<MainProps> = ({}) => {
               />
             </a>
             <a
+              title="Discord"
               href="https://discord.gg/VPb7Dd2y"
               target="_blank"
               rel="noreferrer"
