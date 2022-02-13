@@ -67,7 +67,6 @@ export const Login: React.FC<LoginProps> = ({}) => {
       title: "Comming Soon",
       text: "This feature is comming soon",
       icon: "info",
-      confirmButtonText: "Ok",
     });
   };
 
@@ -94,11 +93,13 @@ export const Login: React.FC<LoginProps> = ({}) => {
         <div className="flex justify-self-center self-center sm:hidden cursor-pointer">
           <img src={logo} alt="logo" className="h-10 w-10 " />
         </div>
-        <div className="flex items-center justify-center m-auto flex-col p-6 gap-5 bg-primary-800 sm:rounded-8 z-10 sm:w-400 w-full">
-          <div className="flex gap-2 flex-col">
+        <div className="flex items-center justify-center m-auto flex-col px-4 py-6 gap-5 bg-primary-800 sm:rounded-8 z-10 sm:w-400 w-full">
+          <div className="flex gap-2 flex-col text-center">
             <span className="text-3xl text-primary-100 font-bold">
               Welcome to{" "}
-              <span className="text-bg hover:underline">Open-Cert</span>
+              <span className="text-bg hover:underline hover:underline-offset-4">
+                Open-Certs
+              </span>
             </span>
           </div>
           <div className="flex flex-col gap-4">
@@ -126,7 +127,7 @@ export const Login: React.FC<LoginProps> = ({}) => {
               Privacy policy
             </a>
             <a
-              href="https://github.com/open-certs/oc-frontend"
+              href="https://github.com/open-certs/oc-frontend/issues"
               className="ml-2 hover:text-primary-200 text-lg"
             >
               Report a bug

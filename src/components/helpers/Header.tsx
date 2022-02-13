@@ -9,7 +9,7 @@ import { Button } from "./Button";
 interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = ({}) => {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const { isAuthenticated, logout, user } = useContext<any>(AuthContext);
   const commingSoon = () => {
     console.log("comming soon");
@@ -26,8 +26,14 @@ export const Header: React.FC<HeaderProps> = ({}) => {
       <div className="flex justify-between items-center h-full px-10 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-center">
-            <img src={logo} alt="logo" className="h-9 w-9" />
-            <span className="text-3xl text-bg hover:underline">Open-Cert</span>
+            <img
+              onClick={() => navigate("/")}
+              src={logo}
+              alt="logo"
+              className="h-9 w-9 cursor-pointer"
+            />
+
+            <span className="text-3xl text-bg hover:underline">Open-Certs</span>
           </div>
           {/* <div className="flex ">
             <div
@@ -61,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({}) => {
             <Button
               className="justify-center text-base py-3"
               color={"secondary"}
-              onClick={() => navigation("/login")}
+              onClick={() => navigate("/login")}
             >
               <div className="flex items-center justify-between w-full text-lg">
                 Login
