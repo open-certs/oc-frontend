@@ -3,7 +3,7 @@ import { FaGithubAlt } from "react-icons/fa";
 
 interface ForkProps {}
 
-export const Fork: React.FC<ForkProps> = ({}) => {
+export const Fork: React.FC<ForkProps> = () => {
   return (
     <div className="ribbon">
       <a href="https://github.com/open-certs/oc-frontend" target={"_blank"}>

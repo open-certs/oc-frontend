@@ -16,7 +16,7 @@ interface MainProps {}
 let browser: any = null;
 let popup: any = null;
 
-export const Main: React.FC<MainProps> = ({}) => {
+export const Main: React.FC<MainProps> = () => {
   const { isAuthenticated } = useContext(AuthContext);
   const { loginConfirm } = useContext<any>(AuthContext);
   const [repoData, setRepoData] = useState<{

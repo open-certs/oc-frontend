@@ -43,7 +43,7 @@ interface LoginProps {}
 let browser: any = null;
 let popup: any = null;
 
-export const Login: React.FC<LoginProps> = ({}) => {
+export const Login: React.FC<LoginProps> = () => {
   const navigate = useNavigate();
   const { loginConfirm } = useContext<any>(AuthContext);
 

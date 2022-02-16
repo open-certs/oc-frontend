@@ -5,7 +5,7 @@ import { Main } from "../components/Landing/Main";
 
 interface RoutingProps {}
 
-export const Routing: React.FC<RoutingProps> = ({}) => {
+export const Routing: React.FC<RoutingProps> = () => {
   return (
     <Routes>
       <Route path="/" element={<Main />} />
