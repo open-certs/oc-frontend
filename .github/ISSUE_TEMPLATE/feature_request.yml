@@ -2,7 +2,7 @@ name: Feature Request
 description: Suggest an idea
 title: "[Feature Request]: "
 labels: 
-  -"enhancement"
+  - "enhancement"
 body:
   - type: checkboxes
     attributes:
@@ -13,7 +13,7 @@ body:
           required: true
         - label: I agree to follow the Code of Conduct that this project adheres to.
           required: true
-        - label: I have searched the feature for a feature request that matches the one I want to file, without success.
+        - label: I have searched the issue for a feature request that matches the one I want to file, without success.
           required: true
   - type: textarea
     attributes:
