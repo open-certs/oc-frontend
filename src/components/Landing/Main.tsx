@@ -100,7 +100,7 @@ export const Main: React.FC<MainProps> = ({}) => {
                   An Open-Source Platform to certify open-source projects.
                 </p>
                 <div className="mt-10">
-                  {isAuthenticated ? (
+                  {!isAuthenticated ? (
                     <div className="flex flex-col items-start justify-start w-3/4">
                       <div className="flex items-center justify-between text-2xl mr-4 mb-4">
                         Get started with
