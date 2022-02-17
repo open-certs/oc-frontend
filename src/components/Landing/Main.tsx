@@ -16,7 +16,7 @@ interface MainProps {}
 let browser: any = null;
 let popup: any = null;
 
-export const Main: React.FC<MainProps> = ({}) => {
+export const Main: React.FC<MainProps> = () => {
   const { isAuthenticated } = useContext(AuthContext);
   const { loginConfirm } = useContext<any>(AuthContext);
   const [repoData, setRepoData] = useState<{
@@ -100,83 +100,81 @@ export const Main: React.FC<MainProps> = ({}) => {
                   An Open-Source Platform to certify open-source projects.
                 </p>
                 <div className="mt-10">
-                  <div className="flex flex-col items-start justify-start w-3/4">
-                    {!isAuthenticated ? (
-                      <>
-                        <div className="flex items-center justify-between text-2xl mr-4 mb-4">
-                          Get started with
+                  {!isAuthenticated ? (
+                    <div className="flex flex-col items-start justify-start w-3/4">
+                      <div className="flex items-center justify-between text-2xl mr-4 mb-4">
+                        Get started with
+                      </div>
+                      <div className="flex w-full">
+                        <div
+                          title="Github"
+                          onClick={() => onClick(`${apiBaseUrl}/auth/github`)}
+                          className="flex flex-1 items-center bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 hover:bg-primary-900 cursor-pointer"
+                        >
+                          <FaGithubAlt size={40} />
                         </div>
-                        <div className="flex w-full">
-                          <div
-                            title="Github"
-                            onClick={() => onClick(`${apiBaseUrl}/auth/github`)}
-                            className="flex flex-1 items-center bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 hover:bg-primary-900 cursor-pointer"
-                          >
-                            <FaGithubAlt size={40} />
-                          </div>
-                          <div
-                            title="Bitbucket"
-                            onClick={() => commingSoon()}
-                            className="flex flex-1 items-center bg-primary-800 justify-center text-base  p-2 w-1/6 mx-3 rounded-8 hover:bg-primary-900 cursor-pointer"
-                          >
-                            <FaBitbucket size={40} />
-                          </div>
-                          <div
-                            title="Gitlab"
-                            onClick={() => commingSoon()}
-                            className="flex flex-1 items-center bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 hover:bg-primary-900 cursor-pointer"
-                          >
-                            <FaGitlab size={40} />
-                          </div>
+                        <div
+                          title="Bitbucket"
+                          onClick={() => commingSoon()}
+                          className="flex flex-1 items-center bg-primary-800 justify-center text-base  p-2 w-1/6 mx-3 rounded-8 hover:bg-primary-900 cursor-pointer"
+                        >
+                          <FaBitbucket size={40} />
                         </div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="mb-6">
-                          <span className="block mb-2 text-xl font-medium text-gray-900 ">
-                            Owner Name
-                          </span>
-                          <input
-                            type={"text"}
-                            className="p-2 rounded-8 text-black"
-                            placeholder="open-certs"
-                            required
-                            name={"ownerName"}
-                            value={ownerName}
-                            onChange={onChange}
-                          />
+                        <div
+                          title="Gitlab"
+                          onClick={() => commingSoon()}
+                          className="flex flex-1 items-center bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 hover:bg-primary-900 cursor-pointer"
+                        >
+                          <FaGitlab size={40} />
                         </div>
-                        <span className="mx-2 text-5xl flex items-center justify-center">
-                          /
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center">
+                      <div className="mb-6">
+                        <span className="block mb-2 text-xl font-medium text-gray-900 ">
+                          Owner Name
                         </span>
-                        <div className="mb-6 w-full">
-                          <span className="block mb-2 text-xl font-medium text-gray-900 ">
-                            Repository Name
-                          </span>
-                          <input
-                            type={"text"}
-                            className="p-2 rounded-8 text-black"
-                            placeholder="react-ui"
-                            required
-                            name={"repoName"}
-                            value={repoName}
-                            onChange={onChange}
-                          />
-                        </div>
-                        <div className="w-1/2">
-                          <Button
-                            className="justify-center text-base py-3 mx-2"
-                            color={"primary"}
-                            onClick={() => handleCertify()}
-                          >
-                            <div className="flex items-center justify-between w-full text-black ml-2 font-bold">
-                              Certify
-                            </div>
-                          </Button>
-                        </div>
-                      </>
-                    )}
-                  </div>
+                        <input
+                          type={"text"}
+                          className="p-2 rounded-8 text-black"
+                          placeholder="open-certs"
+                          required
+                          name={"ownerName"}
+                          value={ownerName}
+                          onChange={onChange}
+                        />
+                      </div>
+                      <span className="mx-2 text-5xl flex items-center justify-center">
+                        /
+                      </span>
+                      <div className="mb-6 w-full">
+                        <span className="block mb-2 text-xl font-medium text-gray-900 ">
+                          Repository Name
+                        </span>
+                        <input
+                          type={"text"}
+                          className="p-2 rounded-8 text-black"
+                          placeholder="react-ui"
+                          required
+                          name={"repoName"}
+                          value={repoName}
+                          onChange={onChange}
+                        />
+                      </div>
+                      <div className="w-1/2">
+                        <Button
+                          className="justify-center text-base py-3 mx-2"
+                          color={"primary"}
+                          onClick={() => handleCertify()}
+                        >
+                          <div className="flex items-center justify-between w-full text-black ml-2 font-bold">
+                            Certify
+                          </div>
+                        </Button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </Grid>

@@ -8,7 +8,7 @@ import { Button } from "./Button";
 
 interface HeaderProps {}
 
-export const Header: React.FC<HeaderProps> = ({}) => {
+export const Header: React.FC<HeaderProps> = () => {
   const navigate = useNavigate();
   const { isAuthenticated, logout, user } = useContext<any>(AuthContext);
   const commingSoon = () => {
