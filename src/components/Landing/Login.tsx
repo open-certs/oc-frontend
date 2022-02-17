@@ -62,10 +62,10 @@ export const Login: React.FC<LoginProps> = ({}) => {
   }, []);
 
   const commingSoon = () => {
-    console.log("comming soon");
+    console.log("coming soon");
     Swal.fire({
-      title: "Comming Soon",
-      text: "This feature is comming soon",
+      title: "Coming Soon",
+      text: "This feature is coming soon",
       icon: "info",
     });
   };
