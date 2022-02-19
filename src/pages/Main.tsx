@@ -92,7 +92,7 @@ export const Main: React.FC<MainProps> = () => {
         <div className="upper flex items-center justify-between py-6 h-auto">
           <Grid container spacing={2} columns={16}>
             <Grid item xs={16} sm={8} order={{ xs: 2, sm: 1 }}>
-              <div className="mt-15 md:px-10 text-center sm:text-left">
+              <div className="sm:mt-15 md:px-10 text-center sm:text-left">
                 <span className="text-5xl sm:text-7xl text-bg hover:underline">
                   Open-Certs
                 </span>
@@ -179,10 +179,9 @@ export const Main: React.FC<MainProps> = () => {
               </div>
             </Grid>
             <Grid item xs={16} sm={8} order={{ xs: 1, sm: 2 }}>
-              <div id="lottie-Landing-animation">
+              <div id="lottie-Landing-animation" className="sm:mt-15">
                 <Lottie
                   style={{
-                    marginTop: "7rem",
                     maxWidth: "100%",
                     transformStyle: "flat",
                   }}
