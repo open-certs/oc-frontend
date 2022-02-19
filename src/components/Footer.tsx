@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex flex-row flex-wrap gap-6 text-primary-300">
           <a
             href="/privacy-policy.html"
-            className="hover:text-primary-200 text-lg"
+            className="ml-2 hover:text-primary-200 text-lg"
           >
             Privacy policy
           </a>
