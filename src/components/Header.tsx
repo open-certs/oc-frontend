@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
+import { IoMdPower } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { logo } from "../config";
 import AuthContext from "../context/AuthContext/AuthProvider";
@@ -12,8 +13,8 @@ export const Header: React.FC<HeaderProps> = () => {
   const { isAuthenticated, logout, user } = useContext<any>(AuthContext);
 
   return (
-    <div className="h-9 bg-primary-800 px-5 fixed w-full">
-      <div className="flex justify-between items-center h-full px-10 py-4">
+    <div className="h-9 bg-primary-800 px-2 sm:px-9 fixed w-full">
+      <div className="flex justify-between items-center h-full py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-center">
             <img
@@ -55,14 +56,14 @@ export const Header: React.FC<HeaderProps> = () => {
             </div>
           ) : (
             <Button
-              className="justify-center text-base py-3"
+              className="justify-center text-base px-3 sm:px-6"
               color={"secondary"}
               onClick={() => navigate("/login")}
             >
-              <div className="flex items-center justify-between w-full text-lg">
-                Login
-                <div />
-              </div>
+              <span className="sm:hidden">
+                <IoMdPower size={20} />
+              </span>
+              <span className="hidden sm:block">Login</span>
             </Button>
           )}
         </div>
