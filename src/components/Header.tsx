@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { logo } from "../../config";
-import AuthContext from "../../context/AuthContext/AuthProvider";
+import { logo } from "../config";
+import AuthContext from "../context/AuthContext/AuthProvider";
 import { Button } from "./Button";
 
 interface HeaderProps {}
@@ -11,15 +10,6 @@ interface HeaderProps {}
 export const Header: React.FC<HeaderProps> = () => {
   const navigate = useNavigate();
   const { isAuthenticated, logout, user } = useContext<any>(AuthContext);
-  const commingSoon = () => {
-    console.log("comming soon");
-    Swal.fire({
-      title: "Comming Soon",
-      text: "This feature is comming soon",
-      icon: "info",
-      confirmButtonText: "Ok",
-    });
-  };
 
   return (
     <div className="h-9 bg-primary-800 px-5 fixed w-full">
@@ -52,7 +42,7 @@ export const Header: React.FC<HeaderProps> = () => {
               <img
                 className="inline object-cover w-7 h-7 mx-4 rounded-full"
                 src={user.photos[0].value}
-                alt="Profile image"
+                alt="Profile avatar"
               />
             </>
           )}

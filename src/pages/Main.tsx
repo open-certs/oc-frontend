@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Header } from "../helpers/Header";
+import { Header } from "../components/Header";
 import Lottie from "react-lottie";
-import * as HomeAnime from "../../assets/home.json";
-import { FaBitbucket, FaDiscord, FaGithubAlt, FaGitlab } from "react-icons/fa";
-import AuthContext from "../../context/AuthContext/AuthProvider";
-import { Button } from "../helpers/Button";
-import { cookies } from "../../context/AuthContext/AuthReducer";
-import { OpenPopUp } from "../helpers/OpenPopup";
-import { apiBaseUrl } from "../../config";
+import * as HomeAnime from "../assets/home.json";
+import { FaBitbucket, FaGithubAlt, FaGitlab } from "react-icons/fa";
+import AuthContext from "../context/AuthContext/AuthProvider";
+import { Button } from "../components/Button";
+import { cookies } from "../context/AuthContext/AuthReducer";
+import { OpenPopUp } from "../components/OpenPopup";
+import { apiBaseUrl } from "../config";
 import { Grid } from "@mui/material";
 import Swal from "sweetalert2";
+import Footer from "../components/Footer";
 
 interface MainProps {}
 
@@ -41,7 +42,7 @@ export const Main: React.FC<MainProps> = () => {
         popup.close();
       }
     };
-  }, []);
+  });
 
   const onChange = (e: any) => {
     const { name, value } = e.target;
@@ -88,12 +89,12 @@ export const Main: React.FC<MainProps> = () => {
     <>
       <Header />
 
-      <div className="background-oregon-grapes px-15 mt-5">
+      <div className="background-oregon-grapes mt-5">
         <div className="upper flex items-center justify-between py-6 h-auto">
           <Grid container spacing={2} columns={16}>
-            <Grid item xs={8}>
-              <div className="mt-15 w-4/5 ">
-                <span className="text-7xl text-left text-bg hover:underline">
+            <Grid item xs={16} sm={8} order={{ xs: 2, sm: 1 }}>
+              <div className="mt-15 md:px-10 text-center sm:text-left">
+                <span className="text-5xl sm:text-7xl text-bg hover:underline">
                   Open-Certs
                 </span>
                 <p className="text-xl opacity-70">
@@ -101,7 +102,7 @@ export const Main: React.FC<MainProps> = () => {
                 </p>
                 <div className="mt-10">
                   {!isAuthenticated ? (
-                    <div className="flex flex-col items-start justify-start w-3/4">
+                    <div className="flex flex-col items-center justify-start sm:w-3/4 sm:items-start">
                       <div className="flex items-center justify-between text-2xl mr-4 mb-4">
                         Get started with
                       </div>
@@ -178,11 +179,12 @@ export const Main: React.FC<MainProps> = () => {
                 </div>
               </div>
             </Grid>
-            <Grid item xs={8}>
+            <Grid item xs={16} sm={8} order={{ xs: 1, sm: 2 }}>
               <div>
                 <Lottie
                   style={{
                     marginTop: "7rem",
+                    maxWidth: "100%",
                   }}
                   width={700}
                   options={{
@@ -196,43 +198,7 @@ export const Main: React.FC<MainProps> = () => {
           </Grid>
         </div>
       </div>
-      <div className="flex flex-row absolute bottom-0 w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">
-        <div className="flex flex-row gap-6 text-primary-300">
-          <a
-            href="/privacy-policy.html"
-            className="hover:text-primary-200 text-lg"
-          >
-            Privacy policy
-          </a>
-          <a
-            href="https://github.com/open-certs/oc-frontend/issues"
-            className="ml-2 hover:text-primary-200 text-lg"
-          >
-            Report a bug
-          </a>
-          <div className="flex flex-row gap-6 sm:gap-4">
-            <a
-              title="Github-oc-frontend"
-              href="https://github.com/open-certs/oc-frontend"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaGithubAlt
-                size={30}
-                className="ml-2 cursor-pointer hover:text-primary-200"
-              />
-            </a>
-            <a
-              title="Discord"
-              href="https://discord.gg/VPb7Dd2y"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaDiscord size={30} className="ml-2 hover:text-primary-200" />
-            </a>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </>
   );
 };

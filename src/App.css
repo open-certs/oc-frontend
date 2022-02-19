@@ -177,7 +177,7 @@ button:focus {
 .background-oregon-grapes {
   background-image: url("./assets/waveDark.svg"), url("./assets/loginWave.svg");
   width: 100% !important;
-  height: 100vh;
+  min-height: 90vh;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

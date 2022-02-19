@@ -1,14 +1,13 @@
 import React, { useContext, useEffect } from "react";
-import { apiBaseUrl, logo } from "../../config";
-import { FaGithubAlt, FaGitlab, FaBitbucket, FaDiscord } from "react-icons/fa";
-import { Button } from "../helpers/Button";
+import { apiBaseUrl, logo } from "../config";
+import { FaGithubAlt, FaGitlab, FaBitbucket } from "react-icons/fa";
+import { Button } from "../components/Button";
 import Swal from "sweetalert2";
-import Lottie from "react-lottie";
-import * as HomeAnime from "../../assets/home.json";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../../context/AuthContext/AuthProvider";
-import { cookies } from "../../context/AuthContext/AuthReducer";
-import { OpenPopUp } from "../helpers/OpenPopup";
+import AuthContext from "../context/AuthContext/AuthProvider";
+import { cookies } from "../context/AuthContext/AuthReducer";
+import { OpenPopUp } from "../components/OpenPopup";
+import Footer from "../components/Footer";
 
 interface LoginButtonProps {
   children: [React.ReactNode, React.ReactNode];
@@ -59,7 +58,7 @@ export const Login: React.FC<LoginProps> = () => {
         popup.close();
       }
     };
-  }, []);
+  });
 
   const commingSoon = () => {
     console.log("comming soon");
@@ -118,41 +117,7 @@ export const Login: React.FC<LoginProps> = () => {
             </LoginButton>
           </div>
         </div>
-        <div className="flex flex-row absolute bottom-0 w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">
-          <div className="flex flex-row gap-6 text-primary-300">
-            <a
-              href="/privacy-policy.html"
-              className="hover:text-primary-200 text-lg"
-            >
-              Privacy policy
-            </a>
-            <a
-              href="https://github.com/open-certs/oc-frontend/issues"
-              className="ml-2 hover:text-primary-200 text-lg"
-            >
-              Report a bug
-            </a>
-            <div className="flex flex-row gap-6 sm:gap-4">
-              <a
-                href="https://github.com/open-certs/oc-frontend"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FaGithubAlt
-                  size={30}
-                  className="ml-2 cursor-pointer hover:text-primary-200"
-                />
-              </a>
-              <a
-                href="https://discord.gg/VPb7Dd2y"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <FaDiscord size={30} className="ml-2 hover:text-primary-200" />
-              </a>
-            </div>
-          </div>
-        </div>
+        <Footer />
       </div>
     </>
   );
