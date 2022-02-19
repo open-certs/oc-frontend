@@ -220,3 +220,7 @@ button:focus {
   align-items: center;
   justify-content: center;
 }
+
+#lottie-Landing-animation > * > * {
+  transform: none !important;
+}

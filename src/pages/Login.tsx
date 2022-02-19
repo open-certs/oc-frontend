@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext/AuthProvider";
 import { cookies } from "../context/AuthContext/AuthReducer";
 import { OpenPopUp } from "../components/OpenPopup";
-import Footer from "../components/Footer";
 
 interface LoginButtonProps {
   children: [React.ReactNode, React.ReactNode];
@@ -117,7 +116,6 @@ export const Login: React.FC<LoginProps> = () => {
             </LoginButton>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );

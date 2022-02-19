@@ -10,7 +10,6 @@ import { OpenPopUp } from "../components/OpenPopup";
 import { apiBaseUrl } from "../config";
 import { Grid } from "@mui/material";
 import Swal from "sweetalert2";
-import Footer from "../components/Footer";
 
 interface MainProps {}
 
@@ -180,11 +179,12 @@ export const Main: React.FC<MainProps> = () => {
               </div>
             </Grid>
             <Grid item xs={16} sm={8} order={{ xs: 1, sm: 2 }}>
-              <div>
+              <div id="lottie-Landing-animation">
                 <Lottie
                   style={{
                     marginTop: "7rem",
                     maxWidth: "100%",
+                    transformStyle: "flat",
                   }}
                   width={700}
                   options={{
@@ -198,7 +198,6 @@ export const Main: React.FC<MainProps> = () => {
           </Grid>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
