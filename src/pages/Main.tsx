@@ -76,11 +76,11 @@ export const Main: React.FC<MainProps> = () => {
         console.log({ err });
       });
   };
-  const commingSoon = () => {
-    console.log("comming soon");
+  const comingSoon = () => {
+    console.log("coming soon");
     Swal.fire({
-      title: "Comming Soon",
-      text: "This feature is comming soon",
+      title: "Coming Soon",
+      text: "This feature is coming soon",
       icon: "info",
     });
   };
@@ -97,7 +97,7 @@ export const Main: React.FC<MainProps> = () => {
                   Open-Certs
                 </span>
                 <p className="text-xl opacity-70">
-                  An Open-Source Platform to certify open-source projects.
+                  Certify your open source contributions in just few steps.
                 </p>
                 <div className="mt-10">
                   {!isAuthenticated ? (
@@ -115,14 +115,14 @@ export const Main: React.FC<MainProps> = () => {
                         </div>
                         <div
                           title="Bitbucket"
-                          onClick={() => commingSoon()}
+                          onClick={() => comingSoon()}
                           className="flex flex-1 items-center bg-primary-800 justify-center text-base  p-2 w-1/6 mx-3 rounded-8 hover:bg-primary-900 cursor-pointer"
                         >
                           <FaBitbucket size={40} />
                         </div>
                         <div
                           title="Gitlab"
-                          onClick={() => commingSoon()}
+                          onClick={() => comingSoon()}
                           className="flex flex-1 items-center bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 hover:bg-primary-900 cursor-pointer"
                         >
                           <FaGitlab size={40} />

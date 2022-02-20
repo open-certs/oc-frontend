@@ -59,11 +59,11 @@ export const Login: React.FC<LoginProps> = () => {
     };
   });
 
-  const commingSoon = () => {
-    console.log("comming soon");
+  const comingSoon = () => {
+    console.log("coming soon");
     Swal.fire({
-      title: "Comming Soon",
-      text: "This feature is comming soon",
+      title: "Coming Soon",
+      text: "This feature is coming soon",
       icon: "info",
     });
   };
@@ -105,12 +105,12 @@ export const Login: React.FC<LoginProps> = () => {
               <FaGithubAlt size={20} className="mr-2" />
               Log in with GitHub
             </LoginButton>
-            <LoginButton onClick={() => commingSoon()}>
+            <LoginButton onClick={() => comingSoon()}>
               <FaGitlab size={20} className="mr-2" />
               Log in with Gitlab
             </LoginButton>
 
-            <LoginButton onClick={commingSoon}>
+            <LoginButton onClick={comingSoon}>
               <FaBitbucket size={20} className="mr-2" />
               Log in with Bitbucket
             </LoginButton>

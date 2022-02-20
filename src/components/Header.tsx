@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { IoMdPower } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { logo } from "../config";
 import AuthContext from "../context/AuthContext/AuthProvider";
 import { Button } from "./Button";
@@ -26,14 +26,6 @@ export const Header: React.FC<HeaderProps> = () => {
 
             <span className="text-3xl text-bg hover:underline">Open-Certs</span>
           </div>
-          {/* <div className="flex ">
-            <div
-              onClick={() => commingSoon()}
-              className="hover:text-primary-200 hover:underline text-xl"
-            >
-              Verify
-            </div>
-          </div> */}
         </div>
 
         <div className={"flex items-center justify-center"}>
@@ -55,16 +47,18 @@ export const Header: React.FC<HeaderProps> = () => {
               <FaSignOutAlt size={20} />
             </div>
           ) : (
-            <Button
-              className="justify-center text-base px-3 sm:px-6"
-              color={"secondary"}
-              onClick={() => navigate("/login")}
-            >
-              <span className="sm:hidden">
-                <IoMdPower size={20} />
-              </span>
-              <span className="hidden sm:block">Login</span>
-            </Button>
+            <Link to="/login">
+              <Button
+                className="justify-center text-base px-3 sm:px-6"
+                color={"secondary"}
+                // onClick={() => navigate("/login")}
+              >
+                <span className="sm:hidden">
+                  <IoMdPower size={20} />
+                </span>
+                <span className="hidden sm:block">Login</span>
+              </Button>
+            </Link>
           )}
         </div>
       </div>
