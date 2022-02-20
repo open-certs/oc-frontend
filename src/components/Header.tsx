@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
+import { IoMdPower } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import { logo } from "../../config";
-import AuthContext from "../../context/AuthContext/AuthProvider";
+import { logo } from "../config";
+import AuthContext from "../context/AuthContext/AuthProvider";
 import { Button } from "./Button";
 
 interface HeaderProps {}
@@ -11,19 +11,10 @@ interface HeaderProps {}
 export const Header: React.FC<HeaderProps> = () => {
   const navigate = useNavigate();
   const { isAuthenticated, logout, user } = useContext<any>(AuthContext);
-  const commingSoon = () => {
-    console.log("comming soon");
-    Swal.fire({
-      title: "Comming Soon",
-      text: "This feature is comming soon",
-      icon: "info",
-      confirmButtonText: "Ok",
-    });
-  };
 
   return (
-    <div className="h-9 bg-primary-800 px-5 fixed w-full">
-      <div className="flex justify-between items-center h-full px-10 py-4">
+    <div className="h-9 bg-primary-800 px-2 sm:px-9 fixed w-full">
+      <div className="flex justify-between items-center h-full py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-center">
             <img
@@ -52,7 +43,7 @@ export const Header: React.FC<HeaderProps> = () => {
               <img
                 className="inline object-cover w-7 h-7 mx-4 rounded-full"
                 src={user.photos[0].value}
-                alt="Profile image"
+                alt="Profile avatar"
               />
             </>
           )}
@@ -65,14 +56,14 @@ export const Header: React.FC<HeaderProps> = () => {
             </div>
           ) : (
             <Button
-              className="justify-center text-base py-3"
+              className="justify-center text-base px-3 sm:px-6"
               color={"secondary"}
               onClick={() => navigate("/login")}
             >
-              <div className="flex items-center justify-between w-full text-lg">
-                Login
-                <div />
-              </div>
+              <span className="sm:hidden">
+                <IoMdPower size={20} />
+              </span>
+              <span className="hidden sm:block">Login</span>
             </Button>
           )}
         </div>

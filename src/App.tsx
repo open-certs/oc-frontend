@@ -1,10 +1,10 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Routing } from "./router/route";
 import { AuthProvider } from "./context/AuthContext/AuthProvider";
-import { Fork } from "./components/helpers/Fork";
+import { Fork } from "./components/Fork";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <AuthProvider>
         <Fork />
         <Routing />
+        <Footer />
       </AuthProvider>
     </BrowserRouter>
   );

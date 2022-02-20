@@ -72,7 +72,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (token) {
       loginConfirm(token);
     }
-  }, []);
+  });
 
   return (
     <AuthContext.Provider

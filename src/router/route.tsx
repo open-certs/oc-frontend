@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Login } from "../components/Landing/Login";
-import { Main } from "../components/Landing/Main";
+import { Login } from "../pages/Login";
+import { Main } from "../pages/Main";
 
 interface RoutingProps {}
 
