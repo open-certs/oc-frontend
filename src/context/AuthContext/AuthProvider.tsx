@@ -39,7 +39,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         return res.json();
       })
       .then((res) => {
-        console.log({ res });
+        // console.log({ res });
         if (res.error) {
           throw new Error("Invalid token");
         } else {
@@ -72,7 +72,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (token) {
       loginConfirm(token);
     }
-  });
+  }, []);
 
   return (
     <AuthContext.Provider
