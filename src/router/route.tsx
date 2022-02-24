@@ -1,15 +1,17 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Login } from "../pages/Login";
-import { Main } from "../pages/Main";
+import routerConfig from "./config";
 
 interface RoutingProps {}
 
 export const Routing: React.FC<RoutingProps> = () => {
   return (
     <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/login" element={<Login />} />
+      {routerConfig.map((Rut: any) => {
+        return (
+          <Route key={Rut.path} path={Rut.path} element={<Rut.Component />} />
+        );
+      })}
     </Routes>
   );
 };

@@ -7,7 +7,7 @@ export const Fork: React.FC<ForkProps> = () => {
   return (
     <div className="ribbon">
       <a
-        href="https://github.com/open-certs/oc-frontend"
+        href="https://github.com/open-certs"
         rel="noreferrer"
         target={"_blank"}
       >

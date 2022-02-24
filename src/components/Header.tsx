@@ -51,7 +51,6 @@ export const Header: React.FC<HeaderProps> = () => {
               <Button
                 className="justify-center text-base px-3 sm:px-6"
                 color={"secondary"}
-                // onClick={() => navigate("/login")}
               >
                 <span className="sm:hidden">
                   <IoMdPower size={20} />
