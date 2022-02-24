@@ -6,15 +6,17 @@ export default function Footer() {
     <div>
       <div className="flex flex-row w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">
         <div className="flex flex-row flex-wrap gap-6 text-primary-300">
-          <a
+          {/* <a
             href="/privacy-policy.html"
             className="hover:text-primary-200 text-lg"
+            target="_blank"
           >
             Privacy policy
-          </a>
+          </a> */}
           <a
             href="https://github.com/open-certs/oc-frontend/issues"
             className="hover:text-primary-200 text-lg"
+            target="_blank"
           >
             Report a bug
           </a>
