@@ -4,9 +4,9 @@
 
 > This includes the frontend for Open-Certs.
 
-After seeing so many open-source projects being monetized without giving any recoginations to contributors, Open-Certs comes with the vision to certify every open-source contributions.
+After seeing so many open-source projects being monetized without giving any recognition to contributors, Open-Certs comes with the vision to certify every open-source contribution.
 
-Open-Certs frontend is based on component based architecture. It takes advantage of `Reactjs` as UI library, `Typescript` as programming language, `TailwindCSS`, `Material-UI`, etc and consumes [Open-Certs-Backend](https://github.com/open-certs/oc-backend) to delivery required services to the users.
+Open-Certs frontend is based on component-based architecture. It takes advantage of `Reactjs` as UI library, `Typescript` as programming language, `TailwindCSS`, `Material-UI`, etc and consumes [Open-Certs-Backend](https://github.com/open-certs/oc-backend) to delivery required services to the users.
 
 <p align="center">
   <br/>
