@@ -46,10 +46,13 @@ module.exports = {
         700: "var(--color-primary-700)",
         800: "var(--color-primary-800)",
         900: "var(--color-primary-900)",
+        bgDark: "var(--color-dark-background)",
+        darkWave1bg: "var(--color-darkwave1-background)",
       },
       secondary: {
         DEFAULT: "var(--color-secondary)",
         "washed-out": "var(--color-secondary-washed-out)",
+        dark: "var(--color-secondary-dark)",
       },
       accent: {
         DEFAULT: "var(--color-accent)",

@@ -5,16 +5,20 @@ import { Routing } from "./router/route";
 import { AuthProvider } from "./context/AuthContext/AuthProvider";
 import { Fork } from "./components/Fork";
 import Footer from "./components/Footer";
+import DarkModeButton from "./components/DarkModeButton";
+import { ThemeProvider } from "./context/ThemeContext/ThemeProvider";
 
 function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Fork />
-        <Routing />
-        <Footer />
-      </AuthProvider>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <Fork />
+          <Routing />
+          <Footer />
+        </AuthProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
