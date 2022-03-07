@@ -4,7 +4,7 @@ import { FaDiscord, FaGithubAlt } from "react-icons/fa";
 export default function Footer() {
   return (
     <div>
-      <div className="flex flex-row w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">
+      <div className="dark:bg-primary-bgDark bg-primary flex flex-row w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">
         <div className="flex flex-row flex-wrap gap-6 text-primary-300">
           {/* <a
             href="/privacy-policy.html"
@@ -41,10 +41,10 @@ export default function Footer() {
               <FaDiscord size={30} className="ml-2 hover:text-primary-200" />
             </a>
           </div>
-          <img
+          {/* <img
             src="https://profile-counter.glitch.me/open-certs/count.svg"
             alt="Visitor Count"
-          />
+          /> */}
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { IoMdPower } from "react-icons/io";
 import { useNavigate, Link } from "react-router-dom";
-import { logo } from "../config";
+import { logoDark, logoLight } from "../config";
 import AuthContext from "../context/AuthContext/AuthProvider";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
 import { Button } from "./Button";
@@ -20,8 +20,9 @@ export const Header: React.FC<HeaderProps> = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-center">
             <img
+              title="open-certs home"
               onClick={() => navigate("/")}
-              src={logo}
+              src={logoDark}
               alt="logo"
               className="h-9 w-9 cursor-pointer"
             />

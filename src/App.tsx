@@ -15,7 +15,6 @@ function App() {
         <AuthProvider>
           <Fork />
           <Routing />
-          <Footer />
         </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>

@@ -1,6 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { FaRegMoon, FaRegSun } from "react-icons/fa";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
+import { BsFillMoonStarsFill } from "react-icons/bs";
+import { IoSunny } from "react-icons/io5";
+
 const DarkModeButton = () => {
   const { theme, toggle } = useContext<any>(ThemeContext);
   console.log({ theme });
@@ -10,7 +13,11 @@ const DarkModeButton = () => {
       onClick={toggle}
       className="cursor-pointer flex justify-center items-center mx-4  rounded-full text-button"
     >
-      {theme !== "dark" ? <FaRegMoon size={30} /> : <FaRegSun size={30} />}
+      {theme !== "dark" ? (
+        <BsFillMoonStarsFill size={20} />
+      ) : (
+        <IoSunny size={20} />
+      )}
     </div>
   );
 };
