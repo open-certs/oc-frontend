@@ -40,7 +40,10 @@ export const Header: React.FC<HeaderProps> = () => {
         <div className={"flex items-center justify-center"}>
           {isAuthenticated === 1 && (
             <>
-              <p className="text-xl opacity-70"> {user.username}</p>
+              <p className="text-xl text-primary opacity-70">
+                {" "}
+                {user.username}
+              </p>
               <img
                 className="inline object-cover w-7 h-7 mx-4 rounded-full"
                 src={user.photos[0].value}
@@ -50,8 +53,9 @@ export const Header: React.FC<HeaderProps> = () => {
           )}
           {isAuthenticated ? (
             <div
+              title="logout"
               onClick={() => logout()}
-              className="flex items-center dark:bg-primary-900 justify-center text-base p-2 rounded-8 dark:hover:bg-primary-800 cursor-pointer"
+              className="dark:bg-primary-800 dark:hover:bg-primary-900 bg-transparent hover:bg-secondary-washed-out flex items-center justify-center text-primary-100 text-base p-2 rounded-8  cursor-pointer"
             >
               <FaSignOutAlt size={20} />
             </div>
