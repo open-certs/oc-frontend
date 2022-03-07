@@ -31,6 +31,7 @@ p.bold {
   --color-primary-900: #0b0e11;
   --color-secondary-washed-out: #879eed;
   --color-secondary: #4a6ffd;
+  --color-secondary-dark: #3158e6;
   --color-accent-glow: rgba(253, 77, 77, 0.3);
   --color-accent-gradient: linear-gradient(
     90deg,
@@ -39,11 +40,21 @@ p.bold {
     rgba(74, 111, 253, 1) 69%,
     rgba(74, 111, 253, 1) 79%
   );
+  --color-accent-gradient-light: linear-gradient(
+    90deg,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 40%,
+    rgb(255, 255, 255) 69%,
+    rgba(255, 255, 255, 0.959) 79%
+  );
   --color-accent: #e0442c;
   --color-accent-hover: #fd6868;
   --color-accent-disabled: #f5bfbf;
   --screen-height-reduction: 0px;
   --color-primary-100-translucent: rgba(222, 227, 234, 0.15);
+  --color-dark-background: #0a0f14;
+  --color-darkwave1-background: #273036;
+  --color-white: #ffffff;
 }
 
 input:focus {
@@ -79,34 +90,35 @@ p.small {
 /* for firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-primary-700) rgba(0, 0, 0, 0);
+  scrollbar-color: #888;
 }
 
 /* for non-firefox */
 ::-webkit-scrollbar {
   overflow: overlay;
-  width: 8px;
+  width: 5px;
   /* shouldnt hardcode width, pls find way to make it dynamic, thin wasn't working for me...*/
 }
 
 ::-webkit-scrollbar-track {
+  width: 5px;
   display: initial;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-primary-700);
+  /* background-color: var(--color-primary-700); */
+  background-color: #888;
   border-radius: 5px;
 }
 
 html,
 body,
 .__next {
-  background-color: #0a0f14;
   height: 100%;
   width: 100%;
   display: flex;
   font-family: "Roboto Mono", monospace;
-  color: white;
+  /* color: white; */
 }
 
 audio {
@@ -173,9 +185,15 @@ button:focus {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
+.text-bg-light {
+  background: var(--color-accent-gradient-light);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
 
-.background-oregon-grapes {
-  background-image: url("./assets/waveDark.svg"), url("./assets/loginWave.svg");
+.background-oregon-grapes-light {
+  background-image: url("./assets/lightwave1.svg"),
+    url("./assets/lightwave2.svg");
   width: 100% !important;
   min-height: 90vh;
   background-repeat: no-repeat;
@@ -184,9 +202,28 @@ button:focus {
   /* background-attachment: fixed; */
   /* background-blend-mode: screen; */
 }
-
+.background-oregon-grapes {
+  background-image: url("./assets/darkwave1.svg"), url("./assets/darkwave2.svg");
+  width: 100% !important;
+  min-height: 90vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  /* background-blend-mode: screen; */
+}
 .background-oregon-grapes-login {
-  background-image: url("./assets/loginWave.svg"), url("./assets/wave.svg");
+  background-image: url("./assets/darkwave2.svg"), url("./assets/darkwave3.svg");
+  width: 100% !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-blend-mode: screen;
+}
+.background-oregon-grapes-light-login {
+  background-image: url("./assets/lightwave2.svg"),
+    url("./assets/loginlightwave1.svg");
   width: 100% !important;
   background-repeat: no-repeat;
   background-position: center;
