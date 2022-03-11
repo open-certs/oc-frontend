@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = () => {
               </p>
               <img
                 className="inline object-cover w-7 h-7 mx-4 rounded-full"
-                src={user.photos[0].value}
+                src={user.avatar}
                 alt="Profile avatar"
               />
             </>
