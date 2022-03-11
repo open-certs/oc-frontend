@@ -9,6 +9,9 @@ import { cookies } from "../context/AuthContext/AuthReducer";
 import { OpenPopUp } from "../components/OpenPopup";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
 import DarkModeButton from "../components/DarkModeButton";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Toast from "../components/Toast";
 
 interface LoginButtonProps {
   children: [React.ReactNode, React.ReactNode];
@@ -65,6 +68,7 @@ export const Login: React.FC<LoginProps> = () => {
   const onClick = (url: string) => {
     popup = OpenPopUp(url, browser, popup);
   };
+
   return (
     <>
       <div
