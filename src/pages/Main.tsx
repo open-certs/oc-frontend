@@ -174,6 +174,7 @@ export const Main: React.FC<MainProps> = () => {
                         </div>
                         <div className="w-1/4">
                           <Button
+                            onClick={() => handleCertify()}
                             className="justify-center text-base px-3 sm:px-6"
                             color={
                               theme === "dark"
