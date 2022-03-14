@@ -11,6 +11,7 @@ import { apiBaseUrl } from "../config";
 import { Grid } from "@mui/material";
 import Swal from "sweetalert2";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
+import Repository from "../components/Repository";
 import Footer from "../components/Footer";
 
 interface MainProps {}
@@ -215,7 +216,9 @@ export const Main: React.FC<MainProps> = () => {
             </Grid>
           </div>
         </div>
+        <Repository />
       </div>
+
       <Footer />
     </>
   );
