@@ -125,12 +125,14 @@ export const Login: React.FC<LoginProps> = () => {
               <FaGithubAlt size={20} className="mr-2" />
               Log in with GitHub
             </LoginButton>
-            <LoginButton onClick={() => comingSoon()}>
+            <LoginButton onClick={() => onClick(`${apiBaseUrl}/auth/gitlab`)}>
               <FaGitlab size={20} className="mr-2" />
               Log in with Gitlab
             </LoginButton>
 
-            <LoginButton onClick={comingSoon}>
+            <LoginButton
+              onClick={() => onClick(`${apiBaseUrl}/auth/bitbucket`)}
+            >
               <FaBitbucket size={20} className="mr-2" />
               Log in with Bitbucket
             </LoginButton>
