@@ -78,14 +78,14 @@ export const Main: React.FC<MainProps> = () => {
         console.log({ err });
       });
   };
-  const comingSoon = () => {
-    console.log("coming soon");
-    Swal.fire({
-      title: "Coming Soon",
-      text: "This feature is coming soon",
-      icon: "info",
-    });
-  };
+  // const comingSoon = () => {
+  //   console.log("coming soon");
+  //   Swal.fire({
+  //     title: "Coming Soon",
+  //     text: "This feature is coming soon",
+  //     icon: "info",
+  //   });
+  // };
   return (
     <>
       <Header />
@@ -123,14 +123,16 @@ export const Main: React.FC<MainProps> = () => {
                           </div>
                           <div
                             title="Bitbucket"
-                            onClick={() => comingSoon()}
+                            onClick={() =>
+                              onClick(`${apiBaseUrl}/auth/bitbucket`)
+                            }
                             className="flex flex-1 items-center dark:bg-primary-800 justify-center text-base  p-2 w-1/6 mx-3 rounded-8 dark:hover:bg-primary-900 cursor-pointer bg-primary-200 hover:bg-primary-100"
                           >
                             <FaBitbucket size={40} />
                           </div>
                           <div
                             title="Gitlab"
-                            onClick={() => comingSoon()}
+                            onClick={() => onClick(`${apiBaseUrl}/auth/gitlab`)}
                             className="flex flex-1 items-center dark:bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 dark:hover:bg-primary-900 cursor-pointer bg-primary-200 hover:bg-primary-100"
                           >
                             <FaGitlab size={40} />
