@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
 import Repository from "../components/Repository";
 import Footer from "../components/Footer";
+import displayToast from "../components/Toast";
 
 interface MainProps {}
 
@@ -35,7 +36,6 @@ export const Main: React.FC<MainProps> = () => {
   useEffect(() => {
     browser = window.self;
     browser.loggedIn = (token: any) => {
-      console.log({ token });
       if (loginConfirm) {
         loginConfirm(token);
         cookies.set("token", token);
@@ -57,9 +57,7 @@ export const Main: React.FC<MainProps> = () => {
 
   const handleCertify = async () => {
     const { ownerName, repoName } = repoData;
-    console.log({ ownerName, repoName });
     const url = `${apiBaseUrl}/certificate/github/${ownerName}/${repoName}`;
-    console.log({ url });
     await fetch(url, {
       method: "POST",
       headers: {
@@ -69,24 +67,23 @@ export const Main: React.FC<MainProps> = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log({ data });
         window.open(
           `${apiBaseUrl}/certificate/${data.certificate._id}`,
           "_blank"
         );
       })
       .catch((err) => {
-        console.log({ err });
+        displayToast("Oops! Something went wrong", "failure");
       });
   };
-  const comingSoon = () => {
-    console.log("coming soon");
-    Swal.fire({
-      title: "Coming Soon",
-      text: "This feature is coming soon",
-      icon: "info",
-    });
-  };
+  // const comingSoon = () => {
+  //   console.log("coming soon");
+  //   Swal.fire({
+  //     title: "Coming Soon",
+  //     text: "This feature is coming soon",
+  //     icon: "info",
+  //   });
+  // };
   return (
     <>
       <Header />
@@ -124,14 +121,16 @@ export const Main: React.FC<MainProps> = () => {
                           </div>
                           <div
                             title="Bitbucket"
-                            onClick={() => comingSoon()}
+                            onClick={() =>
+                              onClick(`${apiBaseUrl}/auth/bitbucket`)
+                            }
                             className="flex flex-1 items-center dark:bg-primary-800 justify-center text-base  p-2 w-1/6 mx-3 rounded-8 dark:hover:bg-primary-900 cursor-pointer bg-primary-200 hover:bg-primary-100"
                           >
                             <FaBitbucket size={40} />
                           </div>
                           <div
                             title="Gitlab"
-                            onClick={() => comingSoon()}
+                            onClick={() => onClick(`${apiBaseUrl}/auth/gitlab`)}
                             className="flex flex-1 items-center dark:bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 dark:hover:bg-primary-900 cursor-pointer bg-primary-200 hover:bg-primary-100"
                           >
                             <FaGitlab size={40} />

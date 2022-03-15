@@ -2,13 +2,13 @@ import React, { useContext, useEffect } from "react";
 import { apiBaseUrl, logoDark, logoLight } from "../config";
 import { FaGithubAlt, FaGitlab, FaBitbucket } from "react-icons/fa";
 import { Button } from "../components/Button";
-import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext/AuthProvider";
 import { cookies } from "../context/AuthContext/AuthReducer";
 import { OpenPopUp } from "../components/OpenPopup";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
 import DarkModeButton from "../components/DarkModeButton";
+import "react-toastify/dist/ReactToastify.css";
 
 interface LoginButtonProps {
   children: [React.ReactNode, React.ReactNode];
@@ -51,7 +51,6 @@ export const Login: React.FC<LoginProps> = () => {
   useEffect(() => {
     browser = window.self;
     browser.loggedIn = (token: any) => {
-      console.log({ token });
       if (loginConfirm) {
         loginConfirm(token);
         cookies.set("token", token);
@@ -62,18 +61,10 @@ export const Login: React.FC<LoginProps> = () => {
     };
   });
 
-  const comingSoon = () => {
-    console.log("coming soon");
-    Swal.fire({
-      title: "Coming Soon",
-      text: "This feature is coming soon",
-      icon: "info",
-    });
-  };
-
   const onClick = (url: string) => {
     popup = OpenPopUp(url, browser, popup);
   };
+
   return (
     <>
       <div
