@@ -261,3 +261,29 @@ button:focus {
 #lottie-Landing-animation > * > * {
   transform: none !important;
 }
+.mainTitle {
+  --padding: 0rem;
+  position: relative;
+  width: max-content;
+}
+
+.mainTitle::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  border-radius: 5px;
+  left: 0;
+  top: 20px;
+  width: 100%;
+  background: rgb(253, 251, 251);
+  transform-origin: center;
+  transform: scaleX(0);
+  transition: all 400ms ease;
+}
+
+.mainTitle.active::after {
+  transform: scaleX(1);
+}
+.navBtn:hover.mainTitle::after {
+  transform: scaleX(1);
+}

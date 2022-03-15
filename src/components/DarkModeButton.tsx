@@ -5,7 +5,7 @@ import { IoSunny } from "react-icons/io5";
 
 const DarkModeButton = () => {
   const { theme, toggle } = useContext<any>(ThemeContext);
-  console.log({ theme });
+  //console.log({ theme });
   return (
     <div
       title="Toggle theme"

@@ -35,7 +35,6 @@ export const Main: React.FC<MainProps> = () => {
   useEffect(() => {
     browser = window.self;
     browser.loggedIn = (token: any) => {
-      console.log({ token });
       if (loginConfirm) {
         loginConfirm(token);
         cookies.set("token", token);
@@ -57,9 +56,7 @@ export const Main: React.FC<MainProps> = () => {
 
   const handleCertify = async () => {
     const { ownerName, repoName } = repoData;
-    console.log({ ownerName, repoName });
     const url = `${apiBaseUrl}/certificate/github/${ownerName}/${repoName}`;
-    console.log({ url });
     await fetch(url, {
       method: "POST",
       headers: {
@@ -69,14 +66,12 @@ export const Main: React.FC<MainProps> = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log({ data });
         window.open(
           `${apiBaseUrl}/certificate/${data.certificate._id}`,
           "_blank"
         );
       })
       .catch((err) => {
-        console.log({ err });
         displayToast("Oops! Something went wrong", "failure");
       });
   };

@@ -40,7 +40,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         return res.json();
       })
       .then((res) => {
-        // console.log({ res });
         if (res.error) {
           displayToast("Invalid Token", "failure");
           throw new Error("Invalid token");
@@ -54,7 +53,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log({ err });
         Swal.fire({
           title: "Error",
           text: "Invalid Token",
