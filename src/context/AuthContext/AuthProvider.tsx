@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import displayToast from "../../components/Toast";
 import { apiBaseUrl } from "../../config";
 import { AuthReducer, cookies } from "./AuthReducer";
 
@@ -41,6 +42,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       .then((res) => {
         // console.log({ res });
         if (res.error) {
+          displayToast("Invalid Token", "failure");
           throw new Error("Invalid token");
         } else {
           dispatch({
@@ -48,6 +50,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             payload: res.user,
           });
           navigate("/");
+          displayToast("Login Successful!", "success");
         }
       })
       .catch((err) => {

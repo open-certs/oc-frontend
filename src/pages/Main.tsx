@@ -12,6 +12,7 @@ import { Grid } from "@mui/material";
 import Swal from "sweetalert2";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
 import Footer from "../components/Footer";
+import displayToast from "../components/Toast";
 
 interface MainProps {}
 
@@ -76,6 +77,7 @@ export const Main: React.FC<MainProps> = () => {
       })
       .catch((err) => {
         console.log({ err });
+        displayToast("Oops! Something went wrong", "failure");
       });
   };
   // const comingSoon = () => {
