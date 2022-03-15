@@ -62,15 +62,6 @@ export const Login: React.FC<LoginProps> = () => {
     };
   });
 
-  const comingSoon = () => {
-    console.log("coming soon");
-    Swal.fire({
-      title: "Coming Soon",
-      text: "This feature is coming soon",
-      icon: "info",
-    });
-  };
-
   const onClick = (url: string) => {
     popup = OpenPopUp(url, browser, popup);
   };
