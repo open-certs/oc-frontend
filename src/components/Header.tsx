@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { IoMdPower } from "react-icons/io";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink as Link } from "react-router-dom";
 import { logoDark } from "../config";
 import AuthContext from "../context/AuthContext/AuthProvider";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
