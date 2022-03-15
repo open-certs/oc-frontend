@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { IoMdPower } from "react-icons/io";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink as Link } from "react-router-dom";
 import { logoDark, logoLight } from "../config";
 import AuthContext from "../context/AuthContext/AuthProvider";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
@@ -19,6 +19,7 @@ export const Header: React.FC<HeaderProps> = () => {
       <div className="flex justify-between items-center h-full py-4 w-full">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-center">
+            {/* open-certs logo */}
             <img
               title="open-certs home"
               onClick={() => navigate("/")}
@@ -27,6 +28,7 @@ export const Header: React.FC<HeaderProps> = () => {
               className="h-9 w-9 cursor-pointer"
             />
 
+            {/* open-certs app name */}
             <span
               className={`text-3xl ${
                 theme === "dark" ? "text-bg" : "text-bg-light"
@@ -37,13 +39,17 @@ export const Header: React.FC<HeaderProps> = () => {
           </div>
         </div>
 
-        <div className={"flex items-center justify-center"}>
+        <div className={" flex items-center justify-center text-primary"}>
+          <div title="Verify certificates" className="mx-6 cursor-pointer">
+            <Link to="/verifyCertificate" className="navBtn mainTitle">
+              Verify
+            </Link>
+          </div>
           {isAuthenticated === 1 && (
             <>
-              <p className="text-xl text-primary opacity-70">
-                {" "}
-                {user.username}
-              </p>
+              {/* user-name */}
+              <p className="text-xl  opacity-70"> {user.username}</p>
+              {/* user profile picture */}
               <img
                 className="inline object-cover w-7 h-7 mx-4 rounded-full"
                 src={user.avatar}
@@ -52,6 +58,7 @@ export const Header: React.FC<HeaderProps> = () => {
             </>
           )}
           {isAuthenticated ? (
+            // logout button
             <div
               title="logout"
               onClick={() => logout()}
@@ -60,6 +67,7 @@ export const Header: React.FC<HeaderProps> = () => {
               <FaSignOutAlt size={20} />
             </div>
           ) : (
+            // login button
             <Link to="/login">
               <Button
                 className="justify-center text-base px-3 sm:px-6"
@@ -74,6 +82,7 @@ export const Header: React.FC<HeaderProps> = () => {
           )}
         </div>
       </div>
+      {/* darkmode toggle button */}
       <DarkModeButton />
     </div>
   );

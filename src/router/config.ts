@@ -1,5 +1,7 @@
+import { Verify } from "crypto";
 import { Login } from "../pages/Login";
 import { Main } from "../pages/Main";
+import { VerifyCertificate } from "../pages/VerifyCertificate";
 
 export default [
   {
@@ -9,5 +11,9 @@ export default [
   {
     path: "/",
     Component: Main,
+  },
+  {
+    path: "/verifyCertificate",
+    Component: VerifyCertificate,
   },
 ];
