@@ -2,6 +2,7 @@ import { Grid } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { Button } from "../components/Button";
 import { Header } from "../components/Header";
+import displayToast from "../components/Toast";
 import { apiBaseUrl } from "../config";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
 
@@ -12,21 +13,27 @@ export const VerifyCertificate: React.FC<VerifyCertificateProps> = () => {
   const [certificate, setCertificate] = useState<string>("");
 
   const handleVerify = async () => {
-    console.log("verify clicked => " + certificateID);
-    const url = `${apiBaseUrl}/certificate/${certificateID}`;
+    //removing dashes from certificate id
+    const id: string = certificateID.replaceAll("-", "");
+    const url = `${apiBaseUrl}/certificate/certDetails/${id}`;
     await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.text())
+      .then((res) => res.json())
       .then((data) => {
-        console.log({ data });
         setCertificate(data);
+        if (!data.error) {
+          window.open(`${apiBaseUrl}/certificate/${id}`, "_blank");
+          displayToast("Certificate is valid", "success");
+        } else {
+          throw new Error();
+        }
       })
       .catch((err) => {
-        console.log({ err });
+        displayToast("Invalid certificate ID", "failure");
       });
   };
   return (
@@ -57,7 +64,7 @@ export const VerifyCertificate: React.FC<VerifyCertificateProps> = () => {
                       </span>
                       <input
                         type={"text"}
-                        className="p-2 border rounded-8 text-black"
+                        className="p-2 border w-full rounded-8 text-black"
                         placeholder="enter certificate ID"
                         required
                         name={"certificateID"}

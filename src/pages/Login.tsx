@@ -51,7 +51,6 @@ export const Login: React.FC<LoginProps> = () => {
   useEffect(() => {
     browser = window.self;
     browser.loggedIn = (token: any) => {
-      console.log({ token });
       if (loginConfirm) {
         loginConfirm(token);
         cookies.set("token", token);

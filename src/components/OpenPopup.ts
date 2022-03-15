@@ -1,5 +1,4 @@
 export const OpenPopUp = (url: string, browser: any, popup: any): any => {
-  console.log("onClick", url);
   if (!browser) return;
   if (popup && !popup.closed) {
     popup.focus();
