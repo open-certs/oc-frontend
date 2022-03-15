@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { FaRegMoon, FaRegSun } from "react-icons/fa";
+import React, { useContext } from "react";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { IoSunny } from "react-icons/io5";
