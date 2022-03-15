@@ -4,8 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import { Routing } from "./router/route";
 import { AuthProvider } from "./context/AuthContext/AuthProvider";
 import { Fork } from "./components/Fork";
-import Footer from "./components/Footer";
-import DarkModeButton from "./components/DarkModeButton";
 import { ThemeProvider } from "./context/ThemeContext/ThemeProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
