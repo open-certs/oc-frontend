@@ -44,7 +44,7 @@ Any contributions you make are **greatly appreciated**.
 4. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 5. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 6. Push to the Branch (`git push origin feature/AmazingFeature`)
-7. Open a Pull Request
+7. Open a Pull Request on `dev ` branch
 
 ## Contributors:
 
