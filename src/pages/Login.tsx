@@ -7,7 +7,6 @@ import AuthContext from "../context/AuthContext/AuthProvider";
 import { cookies } from "../context/AuthContext/AuthReducer";
 import { OpenPopUp } from "../components/OpenPopup";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
-import DarkModeButton from "../components/DarkModeButton";
 import "react-toastify/dist/ReactToastify.css";
 
 interface LoginButtonProps {
@@ -78,21 +77,7 @@ export const Login: React.FC<LoginProps> = () => {
         }}
       >
         <div className="hidden sm:flex" />
-        <div className="flex flex-row absolute -top-5 w-full justify-between px-2 py-5 mt-auto items-center sm:px-3">
-          <div
-            className="hidden sm:flex cursor-pointer"
-            onClick={() => navigate("/")}
-          >
-            <img
-              // src={theme === "dark" ? logoDark : logoLight}
-              title="open-certs home"
-              src={logoDark}
-              alt="logo"
-              className="h-10 w-10"
-            />
-          </div>
-          <DarkModeButton />
-        </div>
+
         <div className="flex justify-self-center self-center sm:hidden cursor-pointer">
           <img
             src={theme === "dark" ? logoDark : logoLight}

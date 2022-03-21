@@ -7,6 +7,8 @@ import { Fork } from "./components/Fork";
 import { ThemeProvider } from "./context/ThemeContext/ThemeProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Header } from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -14,8 +16,10 @@ function App() {
       <BrowserRouter>
         <ToastContainer />
         <AuthProvider>
+          <Header />
           <Fork />
           <Routing />
+          <Footer />
         </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>

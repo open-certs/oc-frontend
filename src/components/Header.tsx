@@ -15,7 +15,7 @@ export const Header: React.FC<HeaderProps> = () => {
   const { isAuthenticated, logout, user } = useContext<any>(AuthContext);
   const { theme } = useContext<any>(ThemeContext);
   return (
-    <div className=" h-9 dark:bg-primary-800 bg-secondary-dark px-2 sm:pl-9 fixed w-full flex justify-end">
+    <div className=" h-9 dark:bg-primary-800 bg-secondary-dark px-2 sm:pl-9 fixed z-50 w-full flex justify-end">
       <div className="flex justify-between items-center h-full py-4 w-full">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-center">
@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = () => {
 
         <div className={" flex items-center justify-center text-primary"}>
           <div title="Verify certificates" className="mx-6 cursor-pointer">
-            <Link to="/verifyCertificate" className="navBtn mainTitle">
+            <Link to="/verifyCertificate" className="navBtn mainTitle text-xl">
               Verify
             </Link>
           </div>
