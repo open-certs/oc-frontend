@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <div>
       <div className="dark:bg-primary-bgDark bg-primary flex flex-row w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">
-        <div className="flex flex-row flex-wrap gap-6 text-primary-300">
+        <div className="flex items-center justify-center flex-wrap gap-6 text-primary-300 ">
           {/* <a
             href="/privacy-policy.html"
             className="hover:text-primary-200 text-lg"
@@ -15,7 +15,7 @@ export default function Footer() {
           </a> */}
           <a
             href="https://github.com/open-certs/oc-frontend/issues"
-            className="hover:text-primary-200 text-lg"
+            className="hover:text-primary-200 text-lg hover:underline"
             target="_blank"
           >
             Report a bug
@@ -41,10 +41,14 @@ export default function Footer() {
               <FaDiscord size={30} className="ml-2 hover:text-primary-200" />
             </a>
           </div>
-          {/* <img
-            src="https://profile-counter.glitch.me/open-certs/count.svg"
-            alt="Visitor Count"
-          /> */}
+          <div className="lg:flex items-center justify-center hidden">
+            <p className="mr-3 text-xl">This page was viewed</p>
+            <img
+              src="https://profile-counter.glitch.me/open-certs/count.svg"
+              alt="Visitor Count"
+            />
+            <p className="mx-3 text-xl">times.</p>
+          </div>
         </div>
       </div>
     </div>

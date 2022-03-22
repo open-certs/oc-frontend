@@ -1,7 +1,6 @@
 import { Grid } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { Button } from "../components/Button";
-import { Header } from "../components/Header";
 import displayToast from "../components/Toast";
 import { apiBaseUrl } from "../config";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
@@ -38,7 +37,6 @@ export const VerifyCertificate: React.FC<VerifyCertificateProps> = () => {
   };
   return (
     <>
-      <Header />
       <div className="mt-9 dark:bg-primary-bgDark ">
         <div
           className={`dark:text-primary-200 ${
@@ -57,9 +55,9 @@ export const VerifyCertificate: React.FC<VerifyCertificateProps> = () => {
                   <p className="text-xl font-semibold opacity-70 mt-3">
                     Verify certificate generated using <em>Open-certs</em>
                   </p>
-                  <div className="flex items-end mt-6 ">
+                  <div className="flex items-end mt-6">
                     <div>
-                      <span className="block  text-xl font-medium text-gray-900 mb-2">
+                      <span className="block  text-xl font-medium text-gray-900 mb-3">
                         Certificate ID
                       </span>
                       <input

@@ -29,6 +29,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const navigate = useNavigate();
 
   const loginConfirm = (token: string): any => {
+    // console.log("loginConfirm");
     const url: string = `${apiBaseUrl}/users/me`;
     fetch(url, {
       method: "GET",
@@ -40,24 +41,25 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         return res.json();
       })
       .then((res) => {
+        // console.log({ res });
         if (res.error) {
           displayToast("Invalid Token", "failure");
           throw new Error("Invalid token");
         } else {
           dispatch({
             type: "LOGIN",
-            payload: res.user,
+            payload: {
+              user: res.user,
+              token,
+            },
           });
           navigate("/");
           displayToast("Login Successful!", "success");
         }
       })
       .catch((err) => {
-        Swal.fire({
-          title: "Error",
-          text: "Invalid Token",
-          icon: "error",
-        });
+        // console.log({ err });
+        displayToast("Something went wrong!", "failure");
       });
   };
 
@@ -70,8 +72,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const token = cookies.get("token");
-    if (token) {
-      loginConfirm(token);
+    const user = cookies.get("user");
+    if (token && user) {
+      // console.log({ token, user });
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          user,
+          token,
+        },
+      });
     }
   }, []);
 

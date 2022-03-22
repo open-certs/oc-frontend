@@ -86,7 +86,6 @@ export const Main: React.FC<MainProps> = () => {
   // };
   return (
     <>
-      <Header />
       <div className="mt-9 dark:bg-primary-bgDark ">
         <div
           className={`dark:text-primary-200 ${
