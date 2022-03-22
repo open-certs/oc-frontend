@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = () => {
               onClick={() => navigate("/")}
               src={logoDark}
               alt="logo"
-              className="h-9 w-9 cursor-pointer"
+              className="h-8 w-8 cursor-pointer"
             />
 
             {/* open-certs app name */}
@@ -51,7 +51,7 @@ export const Header: React.FC<HeaderProps> = () => {
               <p className="text-xl  opacity-70"> {user.username}</p>
               {/* user profile picture */}
               <img
-                className="inline object-cover w-7 h-7 mx-4 rounded-full"
+                className="inline object-cover w-[3.5rem] h-[3.5rem] mx-4 rounded-full"
                 src={user.avatar}
                 alt="Profile avatar"
               />

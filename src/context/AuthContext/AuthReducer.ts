@@ -6,7 +6,7 @@ export const cookies = new Cookies();
 export const AuthReducer = (state: defaultState, action: any) => {
   switch (action.type) {
     case "LOGIN":
-      console.log(action.payload.token, action.payload.user);
+      // console.log(action.payload.token, action.payload.user);
       cookies.set("isAuthenticated", JSON.stringify(1));
       cookies.set("user", action.payload.user);
       cookies.set("token", action.payload.token);
