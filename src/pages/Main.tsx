@@ -216,8 +216,6 @@ export const Main: React.FC<MainProps> = () => {
         </div>
         <Repository />
       </div>
-
-      <Footer />
     </>
   );
 };

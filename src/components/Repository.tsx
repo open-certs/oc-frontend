@@ -3,7 +3,7 @@ import React from "react";
 const Repository = () => {
   return (
     <div className="w-full h-full">
-      <div className=" flex  lg:flex-row flex-col  text-primary-100  lg:ml-[5%] lg:space-x-5 lg:mb-5">
+      <div className=" flex  lg:flex-row flex-col  text-primary-100  lg:ml-[5%] lg:space-x-5 ">
         <div className="border rounded lg:w-[30%] h-[13rem] flex flex-col  items-center">
           <a
             href="https://github.com/open-certs/oc-frontend"
@@ -17,17 +17,17 @@ const Repository = () => {
           <div className="flex mt-3 space-x-5 ml-2 lg:ml-0">
             <div className="flex space-x-2 ">
               <img src="/images/blue.svg" className="w-[15%] lg:w-full" />
-              <span className="lg:mt-[2%] mt-[13%]">Typescript</span>
+              <span className="lg:mt-[2%] mt-[8%]">Typescript</span>
             </div>
             <div className="flex space-x-2">
               <img src="/images/star.svg" className="w-[50%] lg:w-full" />
-              <span className="lg:mt-[10%] mt-[40%]">10</span>
+              <span className="lg:mt-[10%] mt-[25%]">10</span>
             </div>
             <div className="flex space-x-2">
               <img src="/images/fork.svg" className="w-[45%] lg:w-full" />
-              <span className="lg:mt-[10%] mt-[40%]">17</span>
+              <span className="lg:mt-[10%] mt-[25%]">17</span>
             </div>
-            <span className="mt-1">Updated 3 days ago</span>
+            <span className="mt-2 ">Updated 3 days ago</span>
           </div>
         </div>
         <div className="border rounded lg:w-[30%] lg:mt-0 w-full h-[13rem] flex flex-col mt-5  items-center">
