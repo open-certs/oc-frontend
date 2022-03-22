@@ -138,7 +138,7 @@ html {
   background: var(--color-primary-700);
 }
 
-#nprogress {
+/* #nprogress {
   position: relative;
   z-index: 9999999;
 }
@@ -155,7 +155,7 @@ html {
 #nprogress .spinner-icon {
   border-top-color: var(--color-accent-hover) !important;
   border-left-color: var(--color-accent-hover) !important;
-}
+} */
 
 img.emoji {
   height: 1.2rem;
@@ -283,6 +283,7 @@ button:focus {
 
 .mainTitle.active::after {
   transform: scaleX(1);
+  font-weight: bolder;
 }
 .navBtn:hover.mainTitle::after {
   transform: scaleX(1);
