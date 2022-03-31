@@ -9,3 +9,4 @@ export const redirectUri = process.env.REACT_APP_REDIRECT_URI;
 export const apiBaseUrl = __prod__
   ? process.env.REACT_APP_API_BASE_URL
   : process.env.REACT_APP_API_BASE_URL_LOCAL;
+export const reCaptchaSiteKey = process.env.REACT_APP_RECAPTCHA_SITE_KEY;

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Header } from "../components/Header";
 import Lottie from "react-lottie";
 import * as HomeAnime from "../assets/home.json";
 import { FaBitbucket, FaGithubAlt, FaGitlab } from "react-icons/fa";
@@ -7,11 +6,9 @@ import AuthContext from "../context/AuthContext/AuthProvider";
 import { Button } from "../components/Button";
 import { cookies } from "../context/AuthContext/AuthReducer";
 import { OpenPopUp } from "../components/OpenPopup";
-import { apiBaseUrl } from "../config";
+import { apiBaseUrl, reCaptchaSiteKey } from "../config";
 import { Grid } from "@mui/material";
-import Swal from "sweetalert2";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
-import Footer from "../components/Footer";
 import displayToast from "../components/Toast";
 
 interface MainProps {}
@@ -62,6 +59,7 @@ export const Main: React.FC<MainProps> = () => {
       headers: {
         "Content-Type": "application/json",
         Authorization: `${cookies.get("token")}`,
+        recaptcha: `${reCaptchaSiteKey}`,
       },
     })
       .then((res) => res.json())
