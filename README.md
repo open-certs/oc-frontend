@@ -1,12 +1,20 @@
-# OC-Frontend
+# OC-Frontend 📜	
 
 <img alt="open certs" align="right" width="200" src="https://user-images.githubusercontent.com/41825906/153617213-e956c616-4f4a-4d62-95af-2d4ac4d57942.png">
 
 > This includes the frontend for Open-Certs.
 
-After seeing so many open-source projects being monetized without giving any recognition to contributors, Open-Certs comes with the vision to certify every open-source contribution.
+After seeing so many open-source projects being monetized :dollar: without giving any recognition to contributors :adult:	:girl:	, Open-Certs comes with the vision to certify every open-source contribution :tickets:.
 
-Open-Certs frontend is based on component-based architecture. It takes advantage of `Reactjs` as UI library, `Typescript` as programming language, `TailwindCSS`, `Material-UI`, etc and consumes [Open-Certs-Backend](https://github.com/open-certs/oc-backend) to delivery required services to the users.
+It really is that easy!
+
+And the best part of it? **Open-Certs is open source!** 🤩
+
+You can also contribute to it.
+
+**The website is live and can be visited on https://open-certs.dev/** 😃
+
+
 
 <p align="center">
   <br/>
@@ -16,7 +24,28 @@ Open-Certs frontend is based on component-based architecture. It takes advantage
   <a href="https://open-certs.dev/" target="_blank">Live-Demo</a>
 </p>
 
-## Setup
+## Table of Contents 🔖
+
+- [Major Objective](#major-objective)
+- [Tech Stack](#tech-stack)
+- [Set Up](#set-up)
+- [Running the application locally](#running-the-application-locally)
+- [Contributing](#contributing)
+- [Contribution Guidelines](#contribution-guidelines)
+- [Contributors](#contributors)
+- [Visitor's Count](#visitor's-count)
+
+
+## Major Objective 📌
+
+- To let beginners venture into the world of Open Source.
+- To provide validation to every open-source contribution.
+
+## Tech Stack 💻
+
+Open-Certs frontend is based on component-based architecture. It takes advantage of `Reactjs` as UI library, `Typescript` as programming language, `TailwindCSS`, `Material-UI`, etc and consumes [Open-Certs-Backend](https://github.com/open-certs/oc-backend) to delivery required services to the users.
+
+## Set Up 🔨
 
 - To get started, install the required node modules:
 
@@ -26,7 +55,7 @@ yarn install
 
 - Then copy the `.env.sample` to `.env` and configure it.
 
-## Run
+## Running the application locally ⚙️
 
 Then issue the following command to run the server:
 
@@ -34,7 +63,7 @@ Then issue the following command to run the server:
 yarn start
 ```
 
-## Contributing
+## Contributing 🏗
 
 Any contributions you make are **greatly appreciated**.
 
@@ -46,7 +75,20 @@ Any contributions you make are **greatly appreciated**.
 6. Push to the Branch (`git push origin feature/AmazingFeature`)
 7. Open a Pull Request on `dev` branch
 
-## Contributors:
+**Voila :exclamation: You have made a PR to the Open-Certs :boom: . Wait for your submission to be accepted ✔️ and your PR to be merged.**
+
+**Congratulations! 🎉 You've made your first contribution! 🙌🏼** 
+
+## Contribution Guidelines 📋	
+
+- Please read our [Code of Conduct](https://github.com/open-certs/oc-frontend/blob/main/CODE_OF_CONDUCT.md) file for contributing towards the project.
+- If you are creating an issue, please make sure that it is a valid and significant issue that will actually contribute towards the project.
+- Write clear meaningful git commit messages 📧.
+- Make sure your PR's description is clear and it mentions the issue number that your PR fixes.
+- When you're submitting a PR, it would be really awesome if you add a screenshot 📸 or video 📽️ of your change or a link 🔗 to a deployment where it can be tested out along with your PR. It makes it very easy for the reviewers and you'll also get reviews quicker.
+- When you make very minor changes to a PR of yours (like for example fixing a text in button, minor changes requested by reviewers) make sure you squash your commits afterwards so that you don't have an absurd number of commits for a very small fix. (Learn how to squash at [here](https://davidwalsh.name/squash-commits-git))
+
+## Contributors
 
 ### Credits goes to these people: ✨
 
@@ -59,6 +101,6 @@ Any contributions you make are **greatly appreciated**.
 		</td>
 	</tr>
 </table>
-<p align="center">
-  <h2 align="center">Visitor's Count <img align="center" src="https://profile-counter.glitch.me/open-certs/count.svg" alt="Visitor Count" /></h2>
-</p>
+
+## Visitor's Count 📍
+<img align="center" src="https://profile-counter.glitch.me/open-certs/count.svg" alt="Visitor Count" />
