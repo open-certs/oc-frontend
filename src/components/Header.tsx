@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { IoMdPower } from "react-icons/io";
-import { useNavigate, NavLink as Link } from "react-router-dom";
+import { useNavigate, NavLink as Link, useLocation } from "react-router-dom";
 import { logoDark } from "../config";
 import AuthContext from "../context/AuthContext/AuthProvider";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
@@ -14,7 +14,8 @@ export const Header: React.FC<HeaderProps> = () => {
   const navigate = useNavigate();
   const { isAuthenticated, logout, user } = useContext<any>(AuthContext);
   const { theme } = useContext<any>(ThemeContext);
-  return (
+  const location = useLocation();
+  return location.pathname !== "/certificate" ? (
     <div className=" h-9 dark:bg-primary-800 bg-secondary-dark px-2 sm:pl-9 fixed z-50 w-full flex justify-end">
       <div className="flex justify-between items-center h-full py-4 w-full">
         <div className="flex items-center justify-between">
@@ -85,5 +86,5 @@ export const Header: React.FC<HeaderProps> = () => {
       {/* darkmode toggle button */}
       <DarkModeButton />
     </div>
-  );
+  ) : null;
 };
