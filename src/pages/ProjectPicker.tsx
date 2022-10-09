@@ -9,7 +9,7 @@ export const ProjectPicker: React.FC<ProjectPickerProps> = () => {
   return (
     <>
       <div
-        className={`dark:bg-primary-bgDark grid w-full h-full mt-9 dark:text-primary`}
+        className={`dark:bg-[#151a21]  grid w-full h-full mt-9 dark:text-primary`}
       >
         <div className="place-items-center content-center w-full">
           <div
