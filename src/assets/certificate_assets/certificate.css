@@ -1,0 +1,156 @@
+.text-bg {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 114, 110, 1) 0%,
+    rgba(224, 68, 44, 1) 40%,
+    rgba(74, 111, 253, 1) 69%,
+    rgba(74, 111, 253, 1) 79%
+  );
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text;
+  -webkit-background-clip: text !important;
+}
+.body {
+  width: 1053px !important;
+  height: 813.5px !important;
+}
+#cert-container {
+  position: relative;
+}
+
+.cert-body {
+  position: absolute;
+  max-width: none !;
+  width: 1053px !important;
+  height: 813.5px !important;
+}
+.cert-text {
+  position: absolute;
+  top: 0;
+  width: 1053px !important;
+  height: 813.5px !important;
+}
+.cert-on {
+  position: absolute;
+  top: 0;
+  font-size: 11.2px;
+  right: 40px;
+  margin: 10px;
+  color: rgb(224 68 44);
+  font-family: monospace;
+}
+.center {
+  position: absolute;
+}
+.cert-head {
+  position: absolute;
+  top: 40px;
+  text-align: center;
+  width: 100%;
+}
+.cert-head-text {
+  margin: 0px;
+  font-size: 4.2rem;
+}
+.cert-name {
+  font-size: 1.68rem;
+  position: absolute;
+  top: 300px;
+  width: 100%;
+  text-align: center;
+}
+.last-contrib {
+  font-size: 1.05rem;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 460px;
+}
+
+.cert-flex-container {
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: 460px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 140px 70px 70px 70px;
+}
+
+.cert-id {
+  position: absolute;
+  bottom: 0;
+  padding: 2px;
+  margin-left: 40px;
+  color: rgb(224 68 44);
+  font-family: monospace;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.icon {
+  height: 70px;
+  width: auto;
+}
+.icon-qr {
+  height: 124px;
+  width: auto;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 100px 100px 100px;
+}
+
+.veryfy {
+  color: #4a6ffd;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.print {
+  border: solid;
+  border-width: 1px;
+  border-color: black;
+  color: blanchedalmond;
+  background-color: brown;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#print-btn {
+  position: relative;
+  top: -400px;
+  left: 1100px;
+  width: 50px;
+}
+
+@page {
+  size: letter landscape;
+  margin: 0px !important;
+}
+
+@media print {
+  #print-btn {
+    display: none !important;
+  }
+  #cert-container {
+    width: 1053px !important;
+    height: 813.5px !important;
+  }
+  .body {
+    width: 1053px !important;
+    height: 813.5px !important;
+    margin: 1px;
+    padding: 1px;
+  }
+  .text-bg {
+    -webkit-print-color-adjust: exact !important;
+    /* color-adjust: exact !important; */
+  }
+}

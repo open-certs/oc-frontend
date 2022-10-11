@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
 import Footer from "../components/Footer";
 import displayToast from "../components/Toast";
+import CertificateContext from "../context/CertificateContext/CertificateProvider";
 
 interface MainProps {}
 
@@ -22,6 +23,7 @@ let popup: any = null;
 export const Main: React.FC<MainProps> = () => {
   const { isAuthenticated, loginConfirm } = useContext<any>(AuthContext);
   const { theme } = useContext<any>(ThemeContext);
+  const { GetprojectToken } = useContext<any>(CertificateContext);
   const [repoData, setRepoData] = useState<{
     ownerName: string;
     repoName: string;
@@ -54,35 +56,11 @@ export const Main: React.FC<MainProps> = () => {
     popup = OpenPopUp(url, browser, popup);
   };
 
-  const handleCertify = async () => {
+  const fetchproject = async () => {
     const { ownerName, repoName } = repoData;
-    const url = `${apiBaseUrl}/certificate/github/${ownerName}/${repoName}`;
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${cookies.get("token")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        window.open(
-          `${apiBaseUrl}/certificate/${data.certificate._id}`,
-          "_blank"
-        );
-      })
-      .catch((err) => {
-        displayToast("Oops! Something went wrong", "failure");
-      });
+    GetprojectToken(ownerName, repoName);
   };
-  // const comingSoon = () => {
-  //   console.log("coming soon");
-  //   Swal.fire({
-  //     title: "Coming Soon",
-  //     text: "This feature is coming soon",
-  //     icon: "info",
-  //   });
-  // };
+
   return (
     <>
       <div className="mt-9 dark:bg-primary-bgDark ">
@@ -172,7 +150,7 @@ export const Main: React.FC<MainProps> = () => {
                         </div>
                         <div className="w-1/4">
                           <Button
-                            onClick={() => handleCertify()}
+                            onClick={() => fetchproject()}
                             className="justify-center text-base px-3 sm:px-6"
                             color={
                               theme === "dark"
@@ -180,7 +158,7 @@ export const Main: React.FC<MainProps> = () => {
                                 : "accent-secondary"
                             }
                           >
-                            <span className=" block">Certify</span>
+                            <span className=" block">Fetch Project</span>
                           </Button>
                         </div>
                       </>

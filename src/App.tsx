@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Header } from "./components/Header";
 import Footer from "./components/Footer";
+import { CertificateProvider } from "./context/CertificateContext/CertificateProvider";
 
 function App() {
   return (
@@ -16,10 +17,12 @@ function App() {
       <BrowserRouter>
         <ToastContainer />
         <AuthProvider>
-          <Header />
-          <Fork />
-          <Routing />
-          <Footer />
+          <CertificateProvider>
+            <Header />
+            <Fork />
+            <Routing />
+            <Footer />
+          </CertificateProvider>
         </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>
