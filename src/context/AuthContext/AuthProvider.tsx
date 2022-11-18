@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import displayToast from "../../components/Toast";
 import { apiBaseUrl } from "../../config";
 import { AuthReducer, cookies } from "./AuthReducer";

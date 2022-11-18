@@ -5,61 +5,21 @@ import * as HomeAnime from "../assets/home.json";
 import { FaBitbucket, FaGithubAlt, FaGitlab } from "react-icons/fa";
 import AuthContext from "../context/AuthContext/AuthProvider";
 import { Button } from "../components/Button";
-import { cookies } from "../context/AuthContext/AuthReducer";
 import { OpenPopUp } from "../components/OpenPopup";
-import { apiBaseUrl } from "../config";
 import { Grid } from "@mui/material";
 import Swal from "sweetalert2";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
 import Footer from "../components/Footer";
 import displayToast from "../components/Toast";
 import CertificateContext from "../context/CertificateContext/CertificateProvider";
+import MicroLogin from "../components/MicroLogin";
+import ProjectInput from "../components/ProjectInput";
 
 interface MainProps {}
-
-let browser: any = null;
-let popup: any = null;
 
 export const Main: React.FC<MainProps> = () => {
   const { isAuthenticated, loginConfirm } = useContext<any>(AuthContext);
   const { theme } = useContext<any>(ThemeContext);
-  const { GetprojectToken } = useContext<any>(CertificateContext);
-  const [repoData, setRepoData] = useState<{
-    ownerName: string;
-    repoName: string;
-  }>({
-    ownerName: "",
-    repoName: "",
-  });
-
-  const { ownerName, repoName } = repoData;
-
-  useEffect(() => {
-    browser = window.self;
-    browser.loggedIn = (token: any) => {
-      if (loginConfirm) {
-        loginConfirm(token);
-        cookies.set("token", token);
-      }
-      if (popup && !popup.closed) {
-        popup.close();
-      }
-    };
-  });
-
-  const onChange = (e: any) => {
-    const { name, value } = e.target;
-    setRepoData({ ...repoData, [name]: value });
-  };
-
-  const onClick = (url: string) => {
-    popup = OpenPopUp(url, browser, popup);
-  };
-
-  const fetchproject = async () => {
-    const { ownerName, repoName } = repoData;
-    GetprojectToken(ownerName, repoName);
-  };
 
   return (
     <>
@@ -82,87 +42,7 @@ export const Main: React.FC<MainProps> = () => {
                     Certify your open source contributions in just few steps.
                   </p>
                   <div className="mt-8">
-                    {!isAuthenticated ? (
-                      <div className="flex flex-col items-center justify-start sm:w-3/4 sm:items-start">
-                        <div className="flex items-center justify-between text-2xl mr-4 mb-4">
-                          Get started with
-                        </div>
-                        <div className="flex w-full">
-                          <div
-                            title="Github"
-                            onClick={() => onClick(`${apiBaseUrl}/auth/github`)}
-                            className="flex flex-1 items-center dark:bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 dark:hover:bg-primary-900 cursor-pointer bg-primary-200 hover:bg-primary-100 "
-                          >
-                            <FaGithubAlt size={40} />
-                          </div>
-                          <div
-                            title="Bitbucket"
-                            onClick={() =>
-                              onClick(`${apiBaseUrl}/auth/bitbucket`)
-                            }
-                            className="flex flex-1 items-center dark:bg-primary-800 justify-center text-base  p-2 w-1/6 mx-3 rounded-8 dark:hover:bg-primary-900 cursor-pointer bg-primary-200 hover:bg-primary-100"
-                          >
-                            <FaBitbucket size={40} />
-                          </div>
-                          <div
-                            title="Gitlab"
-                            onClick={() => onClick(`${apiBaseUrl}/auth/gitlab`)}
-                            className="flex flex-1 items-center dark:bg-primary-800 justify-center text-base  p-2 w-1/6 rounded-8 dark:hover:bg-primary-900 cursor-pointer bg-primary-200 hover:bg-primary-100"
-                          >
-                            <FaGitlab size={40} />
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      <>
-                        <div className="flex items-center justify-center">
-                          <div className="mb-6">
-                            <span className="block mb-2 text-xl font-medium text-gray-900 ">
-                              Owner Name
-                            </span>
-                            <input
-                              type={"text"}
-                              className="p-2 border rounded-8 text-black"
-                              placeholder="open-certs"
-                              required
-                              name={"ownerName"}
-                              value={ownerName}
-                              onChange={onChange}
-                            />
-                          </div>
-                          <span className="mx-2 text-5xl flex items-center justify-center">
-                            /
-                          </span>
-                          <div className="mb-6 w-full">
-                            <span className="block mb-2 text-xl font-medium text-gray-900 ">
-                              Repository Name
-                            </span>
-                            <input
-                              type={"text"}
-                              className="p-2 border rounded-8 text-black"
-                              placeholder="react-ui"
-                              required
-                              name={"repoName"}
-                              value={repoName}
-                              onChange={onChange}
-                            />
-                          </div>
-                        </div>
-                        <div className="w-1/4">
-                          <Button
-                            onClick={() => fetchproject()}
-                            className="justify-center text-base px-3 sm:px-6"
-                            color={
-                              theme === "dark"
-                                ? "secondary"
-                                : "accent-secondary"
-                            }
-                          >
-                            <span className=" block">Fetch Project</span>
-                          </Button>
-                        </div>
-                      </>
-                    )}
+                    {!isAuthenticated ? <MicroLogin /> : <ProjectInput />}
                   </div>
                 </div>
               </Grid>
