@@ -1,13 +1,11 @@
 import React, { useContext, useState } from "react";
-import CertificateContext from "../../context/CertificateContext/CertificateProvider";
+import { ProjectContext } from "../../context/ProjectContext";
 import ThemeContext from "../../context/ThemeContext/ThemeProvider";
 import { Button } from "../Button";
 
-type Props = {};
-
-export default function GithubProjectInput({}: Props) {
+export default function GithubProjectInput() {
   const { theme } = useContext<any>(ThemeContext);
-  const { GetprojectToken } = useContext<any>(CertificateContext);
+  const { setProject } = useContext<any>(ProjectContext);
   const [repoData, setRepoData] = useState<{
     ownerName: string;
     repoName: string;
@@ -25,7 +23,7 @@ export default function GithubProjectInput({}: Props) {
 
   const fetchproject = async () => {
     const { ownerName, repoName } = repoData;
-    GetprojectToken(ownerName, repoName);
+    setProject("Github", { ownerName, repoName });
   };
   return (
     <div>

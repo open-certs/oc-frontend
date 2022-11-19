@@ -1,13 +1,11 @@
 import React, { useContext, useState } from "react";
-import CertificateContext from "../../context/CertificateContext/CertificateProvider";
+import { ProjectContext } from "../../context/ProjectContext";
 import ThemeContext from "../../context/ThemeContext/ThemeProvider";
 import { Button } from "../Button";
 
-type Props = {};
-
-export default function BitbucketProjectInput({}: Props) {
+export default function BitbucketProjectInput() {
   const { theme } = useContext<any>(ThemeContext);
-  const { GetprojectToken } = useContext<any>(CertificateContext);
+  const { setProject } = useContext<any>(ProjectContext);
   const [repoData, setRepoData] = useState<{
     workspace: string;
     repoName: string;
@@ -25,7 +23,7 @@ export default function BitbucketProjectInput({}: Props) {
 
   const fetchproject = async () => {
     const { workspace, repoName } = repoData;
-    GetprojectToken(workspace, repoName);
+    setProject("Bitbucket", { workspace, repoName });
   };
   return (
     <div>

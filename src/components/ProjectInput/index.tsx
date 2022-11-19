@@ -4,9 +4,7 @@ import BitbucketProjectInput from "./BitbucketProjectInput";
 import GithubProjectInput from "./GithubProjectInput";
 import GitlabProjectInput from "./GitlabProjectInput";
 
-type Props = {};
-
-export default function ProjectInput({}: Props) {
+export default function ProjectInput() {
   const { isAuthenticated, user } = useContext<any>(AuthContext);
   if (!isAuthenticated) {
     return null;

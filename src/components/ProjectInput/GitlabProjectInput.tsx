@@ -1,13 +1,11 @@
 import React, { useContext, useState } from "react";
-import CertificateContext from "../../context/CertificateContext/CertificateProvider";
+import { ProjectContext } from "../../context/ProjectContext";
 import ThemeContext from "../../context/ThemeContext/ThemeProvider";
 import { Button } from "../Button";
 
-type Props = {};
-
-export default function GitlabProjectInput({}: Props) {
+export default function GitlabProjectInput() {
   const { theme } = useContext<any>(ThemeContext);
-  const { GetprojectToken } = useContext<any>(CertificateContext);
+  const { setProject } = useContext<any>(ProjectContext);
   const [repoData, setRepoData] = useState<{
     projectId: string;
   }>({
@@ -23,7 +21,7 @@ export default function GitlabProjectInput({}: Props) {
 
   const fetchproject = async () => {
     const { projectId } = repoData;
-    GetprojectToken(projectId);
+    setProject("Gitlab", { projectId });
   };
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "../assets/certificate_assets/certificate.css";
 import certbody from "../assets/certificate_assets/cert-body.png";
 import CertificateContext from "../context/CertificateContext/CertificateProvider";
@@ -6,16 +6,21 @@ import CertificateContext from "../context/CertificateContext/CertificateProvide
 interface CertificateProps {}
 export const Certificate: React.FC<CertificateProps> = () => {
   const { certificateData } = useContext<any>(CertificateContext);
-  const print = () => {
+
+  useEffect(() => {
     window.print();
-  };
+  }, []);
 
   return (
     <div style={{ maxWidth: "1100px" }}>
       <div className="body">
         <link rel="stylesheet" href="../assets/certificate_assets/print.css" />
         <div id="cert-container">
-          <img className="cert-body" src={certbody} />
+          <img
+            className="cert-body"
+            src={certbody}
+            alt="Certificate background"
+          />
           <div className="cert-text">
             <div className="cert-on">
               Certified On:{" "}
@@ -53,6 +58,7 @@ export const Certificate: React.FC<CertificateProps> = () => {
                   <img
                     className="icon-qr"
                     src={`https://chart.googleapis.com/chart?chs=177x177&cht=qr&chl=${certificateData.certificate.url}`}
+                    alt="QR Code"
                   />
                   <br />
                 </a>
@@ -63,6 +69,7 @@ export const Certificate: React.FC<CertificateProps> = () => {
                   <img
                     className="icon"
                     src={certificateData.certificate.images[0].src}
+                    alt="Github"
                   />
                 </a>
               </div>
@@ -75,11 +82,6 @@ export const Certificate: React.FC<CertificateProps> = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="center" id="print-btn" style={{}}>
-        <span onClick={print} className="print">
-          print
-        </span>
       </div>
     </div>
   );

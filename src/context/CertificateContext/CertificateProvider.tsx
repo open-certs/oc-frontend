@@ -21,37 +21,6 @@ export const CertificateProvider: React.FC<CertificateProviderProps> = ({
 }) => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(CertificateReducer, initialState);
-  const GetprojectToken = async (ownerName: string, repoName: string) => {
-    const url = `${apiBaseUrl}/project/github/${ownerName}/${repoName}`;
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${cookies.get("token")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error?.type === "GithubAPITimeoutError") {
-          displayToast(
-            "Please try again, it's an error from our side",
-            "failure"
-          ); //github 503 error
-        } else if (data.error) {
-          displayToast("Oops! Something went wrong", "failure");
-        } else {
-          dispatch({
-            type: "GETPROJECTTOKEN",
-            payload: data,
-          });
-          navigate("/projectpicker");
-          displayToast("Project Fetched Successfully", "success");
-        }
-      })
-      .catch((err) => {
-        displayToast("Oops! Something went wrong", "failure");
-      });
-  };
   const GenerateCertificate = async (projectToken: string) => {
     const url = `${apiBaseUrl}/certificate`;
     await fetch(url, {
@@ -84,7 +53,6 @@ export const CertificateProvider: React.FC<CertificateProviderProps> = ({
       value={
         {
           ...state,
-          GetprojectToken,
           GenerateCertificate,
         } as any
       }

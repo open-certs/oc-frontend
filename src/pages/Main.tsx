@@ -1,24 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Header } from "../components/Header";
+import React, { useContext } from "react";
 import Lottie from "react-lottie";
 import * as HomeAnime from "../assets/home.json";
-import { FaBitbucket, FaGithubAlt, FaGitlab } from "react-icons/fa";
 import AuthContext from "../context/AuthContext/AuthProvider";
-import { Button } from "../components/Button";
-import { OpenPopUp } from "../components/OpenPopup";
 import { Grid } from "@mui/material";
-import Swal from "sweetalert2";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
-import Footer from "../components/Footer";
-import displayToast from "../components/Toast";
-import CertificateContext from "../context/CertificateContext/CertificateProvider";
 import MicroLogin from "../components/MicroLogin";
 import ProjectInput from "../components/ProjectInput";
 
 interface MainProps {}
 
 export const Main: React.FC<MainProps> = () => {
-  const { isAuthenticated, loginConfirm } = useContext<any>(AuthContext);
+  const { isAuthenticated } = useContext<any>(AuthContext);
   const { theme } = useContext<any>(ThemeContext);
 
   return (

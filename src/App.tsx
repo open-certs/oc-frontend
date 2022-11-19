@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Header } from "./components/Header";
 import Footer from "./components/Footer";
 import { CertificateProvider } from "./context/CertificateContext/CertificateProvider";
+import ProjectRouter from "./context/ProjectContext/ProjectRouter";
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           <CertificateProvider>
             <Header />
             <Fork />
-            <Routing />
+            <ProjectRouter>
+              <Routing />
+            </ProjectRouter>
             <Footer />
           </CertificateProvider>
         </AuthProvider>
