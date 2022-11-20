@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import "../../src/assets/certificate_assets/projectpiker.css";
-import CertificateContext from "../context/CertificateContext/CertificateProvider";
-import { Button } from "../components/Button";
 import { ProjectContext } from "../context/ProjectContext";
 import ProjectStat from "../components/ProjectStat";
 import ProjectDataTab from "../components/ProjectDataTab";
 import { FaGitAlt } from "react-icons/fa";
+import ProjectProgressBar from "../components/ProjectProgressBar/ProjectProgressBar";
+import GenerateCertificate from "../components/GenerateCertificate";
 
 interface ProjectPickerProps {}
 export const ProjectPicker: React.FC<ProjectPickerProps> = () => {
   const { projectData } = useContext<any>(ProjectContext);
-  const { GenerateCertificate } = useContext<any>(CertificateContext);
+
   return (
     <>
       <div className={`dark:bg-[#151a21]  grid w-full mt-9 dark:text-primary`}>
@@ -85,6 +85,11 @@ export const ProjectPicker: React.FC<ProjectPickerProps> = () => {
                   title="Category"
                   className="dark:bg-[#243b47]  bg-[#95a9f0]"
                 />
+                <br></br>
+                <ProjectProgressBar
+                  value={projectData.accumulatedData.reputation}
+                  dataPoints={projectData.levels}
+                />
               </ProjectDataTab>
               <ProjectDataTab title="Links">
                 <div className="text-center">
@@ -129,13 +134,11 @@ export const ProjectPicker: React.FC<ProjectPickerProps> = () => {
             </div>
             <br />
             <br />
-            <Button
-              onClick={() => {
-                GenerateCertificate(projectData.projectToken);
-              }}
-            >
-              Generate Certificate
-            </Button>
+            <GenerateCertificate
+              token={projectData.projectToken}
+              value={projectData.accumulatedData.reputation}
+              data={projectData.levels}
+            />
           </div>
         </div>
       </div>
