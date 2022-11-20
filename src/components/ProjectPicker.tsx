@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import "../../src/assets/certificate_assets/projectpiker.css";
 import { ProjectContext } from "../context/ProjectContext";
-import ProjectStat from "../components/ProjectStat";
-import ProjectDataTab from "../components/ProjectDataTab";
+import ProjectStat from "./ProjectStat";
+import ProjectDataTab from "./ProjectDataTab";
 import { FaGitAlt } from "react-icons/fa";
-import ProjectProgressBar from "../components/ProjectProgressBar/ProjectProgressBar";
-import GenerateCertificate from "../components/GenerateCertificate";
+import ProjectProgressBar from "./ProjectProgressBar/ProjectProgressBar";
+import GenerateCertificate from "./GenerateCertificate";
 
 interface ProjectPickerProps {}
 export const ProjectPicker: React.FC<ProjectPickerProps> = () => {

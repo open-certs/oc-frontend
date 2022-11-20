@@ -6,6 +6,7 @@ import { Grid } from "@mui/material";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
 import MicroLogin from "../components/MicroLogin";
 import ProjectInput from "../components/ProjectInput";
+import ProjectRouter from "../context/ProjectContext/ProjectRouter";
 
 interface MainProps {}
 
@@ -14,7 +15,7 @@ export const Main: React.FC<MainProps> = () => {
   const { theme } = useContext<any>(ThemeContext);
 
   return (
-    <>
+    <ProjectRouter>
       <div className="mt-9 dark:bg-primary-bgDark ">
         <div
           className={`dark:text-primary-200 ${
@@ -64,6 +65,6 @@ export const Main: React.FC<MainProps> = () => {
           </div>
         </div>
       </div>
-    </>
+    </ProjectRouter>
   );
 };

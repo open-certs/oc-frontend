@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ProjectContextProvider, { ProjectContext } from ".";
-import ProjectPicker from "../../pages/ProjectPicker";
+import ProjectPicker from "../../components/ProjectPicker";
 
 type Props = {
   children?: React.ReactNode;

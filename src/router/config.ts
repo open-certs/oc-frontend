@@ -1,7 +1,7 @@
+import Certificate from "../pages/Certificate";
 import { Login } from "../pages/Login";
 import { Main } from "../pages/Main";
 import { VerifyCertificate } from "../pages/VerifyCertificate";
-import Certificate from "../pages/Certificate";
 
 const RouterConfig = [
   {
@@ -15,6 +15,10 @@ const RouterConfig = [
   {
     path: "/verifyCertificate",
     Component: VerifyCertificate,
+  },
+  {
+    path: "/certificate/:id",
+    Component: Certificate,
   },
   {
     path: "/certificate",
