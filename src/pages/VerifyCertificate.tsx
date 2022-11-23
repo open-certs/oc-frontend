@@ -1,39 +1,18 @@
 import { Grid } from "@mui/material";
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
-import displayToast from "../components/Toast";
-import { apiBaseUrl } from "../config";
 import ThemeContext from "../context/ThemeContext/ThemeProvider";
 
 interface VerifyCertificateProps {}
 export const VerifyCertificate: React.FC<VerifyCertificateProps> = () => {
   const { theme } = useContext<any>(ThemeContext);
+  const navigate = useNavigate();
   const [certificateID, setCertificateID] = useState<string>("");
-  const [certificate, setCertificate] = useState<string>("");
 
   const handleVerify = async () => {
-    //removing dashes from certificate id
     const id: string = certificateID.replaceAll("-", "");
-    const url = `${apiBaseUrl}/certificate/certDetails/${id}`;
-    await fetch(url, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setCertificate(data);
-        if (!data.error) {
-          window.open(`${apiBaseUrl}/certificate/${id}`, "_blank");
-          displayToast("Certificate is valid", "success");
-        } else {
-          throw new Error();
-        }
-      })
-      .catch((err) => {
-        displayToast("Invalid certificate ID", "failure");
-      });
+    navigate("/certificate/" + id);
   };
   return (
     <>

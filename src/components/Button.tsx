@@ -49,20 +49,16 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      disabled={disabled || loading}
-      className={`flex outline-none focus:ring-1 focus:ring-${color} ${
+      className={`outline-none focus:ring-1 w-max focus:ring-${color} ${
         sizeClassnames[size]
       } ${transition ? `transition duration-200 ease-in-out` : ``} ${
         colorClassnames[color]
-      } text-lg flex items-center justify-between w-full ${className}`}
+      } text-lg items-center justify-center ${className}`}
       data-testid="button"
+      disabled={disabled || loading}
       {...props}
     >
-      <span
-        className={
-          loading ? "opacity-0" : `flex items-center justify-between w-full`
-        }
-      >
+      <span className={loading ? "opacity-0" : `items-center justify-between`}>
         {icon ? <span className={`mr-2 items-center`}>{icon}</span> : null}
         {children}
       </span>

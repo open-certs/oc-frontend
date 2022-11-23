@@ -1,11 +1,9 @@
-import { Verify } from "crypto";
+import Certificate from "../pages/Certificate";
 import { Login } from "../pages/Login";
 import { Main } from "../pages/Main";
 import { VerifyCertificate } from "../pages/VerifyCertificate";
-import Certificate from "../pages/Certificate";
-import ProjectPicker from "../pages/ProjectPicker";
 
-export default [
+const RouterConfig = [
   {
     path: "/login",
     Component: Login,
@@ -19,11 +17,13 @@ export default [
     Component: VerifyCertificate,
   },
   {
-    path: "/certificate",
+    path: "/certificate/:id",
     Component: Certificate,
   },
   {
-    path: "/projectpicker",
-    Component: ProjectPicker,
+    path: "/certificate",
+    Component: Certificate,
   },
 ];
+
+export default RouterConfig;

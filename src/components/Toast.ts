@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 
 export default function displayToast(
   message: string,
-  type: "success" | "failure"
+  type: "success" | "failure" | "info"
 ) {
   switch (type) {
     case "success":

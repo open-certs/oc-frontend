@@ -1,88 +1,121 @@
-import React, { useContext } from "react";
-import "../assets/certificate_assets/certificate.css";
-import certbody from "../assets/certificate_assets/cert-body.png";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import displayToast from "../components/Toast";
+import { apiBaseUrl } from "../config";
+import ThemeContext from "../context/ThemeContext/ThemeProvider";
+import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import CertificateContext from "../context/CertificateContext/CertificateProvider";
 
-interface CertificateProps {}
-export const Certificate: React.FC<CertificateProps> = () => {
-  const { certificateData } = useContext<any>(CertificateContext);
-  const print = () => {
-    window.print();
-  };
+const Certificate: React.FC = () => {
+  const { setCertificate: setCert } = useContext<any>(CertificateContext);
+  const { id } = useParams<{ id: string }>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [certificate, setcertificate] = useState<any>(null);
+  const { theme } = useContext<any>(ThemeContext);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    setLoading(true);
+    const url = `${apiBaseUrl}/certificate/certDetails/${id}`;
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.error) {
+          console.log(data);
+          setcertificate(data.certificate);
+          // displayToast("Certificate Found", "success");
+        } else {
+          displayToast(data.error.message, "failure");
+          navigate(-1);
+        }
+      })
+      .catch((err) => {
+        displayToast("Oops some thing went wrong!!", "failure");
+        navigate(-1);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [id, navigate]);
   return (
-    <div style={{ maxWidth: "1100px" }}>
-      <div className="body">
-        <link rel="stylesheet" href="../assets/certificate_assets/print.css" />
-        <div id="cert-container">
-          <img className="cert-body" src={certbody} />
-          <div className="cert-text">
-            <div className="cert-on">
-              Certified On:{" "}
-              {certificateData.certificate.createdAt
-                .split("T")
-                .join(" ")
-                .slice(0, 19)}
+    <div style={{ minHeight: "calc(100vp - 170px)", width: "100%" }}>
+      <div className="mt-9 dark:bg-primary-bgDark ">
+        <div
+          className={`dark:text-primary-200 ${
+            theme === "dark"
+              ? "background-oregon-grapes"
+              : "background-oregon-grapes-light"
+          }  dark:bg-no-repeat bg-cover bg-center mt-5`}
+        >
+          {loading ? (
+            <div className="flex justify-center items-center h-screen w-full">
+              <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
             </div>
-            <div className="cert-head">
-              <h1 className="text-bg cert-head-text">Certificate</h1>
-              <h2 className="text-bg cert-head-text">of Contribution</h2>
-            </div>
-            <div className="cert-name">
-              This is to certify that <br />
-              <span
-                style={{ fontSize: "2.45rem", color: "red", fontWeight: "900" }}
-              >
-                {certificateData.certificate.userName}
-              </span>
-              <br />
-              has actively contibuted to open source project{" "}
-              <b>{certificateData.certificate.projectRepo}</b> of <br />
-              <b>{certificateData.certificate.projectOwner}.</b>
-            </div>
-            <h2 className="last-contrib">
-              <b>Last contributed at : </b>{" "}
-              {certificateData.certificate.lastContributionDate
-                .split("T")
-                .join(" ")
-                .slice(0, 19)}
-            </h2>
-            <div className="cert-flex-container cert-footer">
-              <div>
-                <a href={`/certificate/${certificateData.certificate._id}`}>
-                  <img
-                    className="icon-qr"
-                    src={`https://chart.googleapis.com/chart?chs=177x177&cht=qr&chl=${certificateData.certificate.url}`}
-                  />
-                  <br />
-                </a>
-                <p className="veryfy">Scan to verify</p>
+          ) : null}
+          {certificate && (
+            <div className="flex flex-wrap justify-center items-center h-screen w-full">
+              <div className="max-w-sm w-full lg:flex">
+                <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal backdrop-blur-xl">
+                  <div className="mb-8">
+                    <p className="text-sm text-gray-600 flex items-center text-[green]">
+                      <AiOutlineSafetyCertificate size={20} /> Certificate Found
+                    </p>
+                    <div className="text-gray-900 font-bold text-xl mb-2">
+                      Certificate of Contribution
+                    </div>
+                    <p className="text-gray-700 text-base">
+                      Issued to <b>{certificate.userName}</b> for his/her/their
+                      active contribution in <i>{certificate.projectRepo}</i>{" "}
+                      project.
+                    </p>
+                    <br />
+                    <p className="text-gray-600 text-base">
+                      Issued on :{" "}
+                      <i>{new Date(certificate.createdAt).toLocaleString()}</i>
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <img
+                      className="w-6 h-6 rounded-full mr-4"
+                      src={certificate.images[0].src}
+                      alt={certificate.images[0].url}
+                    />
+                    <div className="text-sm">
+                      <p className="text-gray-900 leading-none">
+                        Last Contribution on{" "}
+                      </p>
+                      <p className="text-gray-600">
+                        <i>
+                          {new Date(
+                            certificate.lastContributionDate
+                          ).toLocaleString()}
+                        </i>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="px-6 pt-4 pb-2 flex justify-center">
+                    <span
+                      className=" cursor-pointer inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 bg-secondary"
+                      onClick={() => {
+                        setCert(certificate);
+                      }}
+                    >
+                      {" "}
+                      Download
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div className="pt-75px">
-                <a href="https://github.com/">
-                  <img
-                    className="icon"
-                    src={certificateData.certificate.images[0].src}
-                  />
-                </a>
-              </div>
             </div>
-            <div className="cert-id">
-              Certificate Id:{" "}
-              {certificateData.certificate._id
-                .match(new RegExp(".{1,5}", "g"))
-                .join("-")}
-            </div>
-          </div>
+          )}
         </div>
-      </div>
-      <div className="center" id="print-btn" style={{}}>
-        <span onClick={print} className="print">
-          print
-        </span>
       </div>
     </div>
   );
 };
-
 export default Certificate;
